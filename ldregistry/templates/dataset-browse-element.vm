@@ -1,0 +1,50 @@
+## Render a dataset and its links.
+##   $uri: the dataset to be rendered
+## Called from dataset-browse to add new elements to the browse diagram
+
+#set($response=$registry.perform("Read","?entity=$lib.pathEncode($uri)", $requestor))
+#if($response.status < 400)
+  #set($model=$response.entity)
+  $model.setLanguage($language)
+  #set($node=$model.getNode($uri))
+
+  #set($thisNode = $lib.pathEncode($uri))
+  <div class="node node-base" data-id="$thisNode">
+    #set($type="Dataset")
+    #if($node.hasResourceValue("rdf:type", "dgu:URIset"))
+      #set($type="URIset")
+    #elseif($node.hasResourceValue("rdf:type", "qb:DataSet"))
+      #set($type="Datacube")
+    #end
+    <div class="header">
+      <span>$type</span>
+      <span class="pull-right">
+        <a href="#" class="add-out" data-node="$thisNode"><i class="icon-resize-full icon-white popinfo" data-trigger="hover" data-placement="bottom"  data-content="add outgoing links"></i></a>
+        <a href="#" class="add-in" data-node="$thisNode"><i class="icon-resize-small icon-white popinfo" data-trigger="hover" data-placement="bottom" data-content="add incoming links"></i></a>
+        <a href="#" class="close-node" data-node="$thisNode"><i class="icon-remove-circle icon-white"></i></a>
+        </span>
+    </div>
+    <div class="name">$node.name</div>
+    <div class="annotation">
+      #if($node.getPropertyValue("void:entities"))
+        <span>Size: $node.getPropertyValue("void:entities").lexicalForm<span>
+      #end
+      <span class="pull-right"><a href="/?entity=$lib.pathEncode($uri)"><i class="icon-share-alt"></i></a></span>
+    </div>
+  </div>
+  
+  <script type="text/javascript">
+    DATASET_EXPLORER.registerNode( "$thisNode", "$node.name" );
+     
+    #set($links = $lib.reg.query("SELECT ?predicate ?linked WHERE {GRAPH ?g { [] a void:Linkset; void:target ?linked ; reg:sourceDataset <${0}> ; void:linkPredicate ?predicate. FILTER (?linked != <${0}>)}}", $node))
+    #foreach($row in $links)
+      DATASET_EXPLORER.register( "$thisNode", "$lib.pathEncode($row.linked.uRI)",  "$row.predicate.name" )
+    #end
+    
+    #set($links = $lib.reg.query("SELECT ?predicate ?linked WHERE {GRAPH ?g { [] a void:Linkset; reg:sourceDataset ?linked ; void:target <${0}> ; void:linkPredicate ?predicate. FILTER (?linked != <${0}>)}}", $uri))
+    #foreach($row in $links)
+      DATASET_EXPLORER.register("$lib.pathEncode($row.linked.uRI)", "$thisNode", "$row.predicate.name"  )
+    #end
+  </script>
+
+#end

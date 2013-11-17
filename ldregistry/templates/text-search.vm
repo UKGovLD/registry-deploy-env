@@ -1,0 +1,64 @@
+#set($pageTitle="Search: $query")
+#parse("header.vm")
+#parse("navbar.vm")
+
+#set($target='<nullsearch>')
+#if($query && !$query.trim().isEmpty()) #set($target=$query) #end
+
+#if($page)
+  #set($paging="_page=$page")
+#else
+  #set($paging="firstPage")
+#end
+
+#set($response=$registry.perform("Search","?query=$lib.pathEncode($query)&_view=with_metadata&$paging", $requestor))
+
+#if($response.status == 200)
+  #set($model=$response.entity)
+  #set($qr=$model.querySelectW("SELECT * WHERE {?page a ldp:Page; api:items ?items}")[0])
+  #set($items=$qr.items.asList())
+  #set($pageres=$qr.page)
+
+  <h3>Search results for: $query</h3>
+
+  <div class="row">
+    <div class="span8">
+        #foreach($entity in $items)
+          #set($temp=$entity.connectedNodes("^reg:entity/^reg:definition"))
+          #if(!$temp.isEmpty())  #set($item=$temp.get(0)) #else #set($item=$entity) #end
+
+          <div class="result-blob">
+            <div class="row">
+              <div class="span6">
+                <div class="blob-inner">
+                    <strong>Item:</strong> <a href="#linkhref($item)"> $entity.name </a>
+                    ## <strong>Entity:</strong> <a href="#linkhref($entity)"> $entity.name </a>
+                    <p><strong>Type:</strong> #foreach($ty in $entity.listPropertyValues("rdf:type"))#linkfor($ty)#if( $foreach.hasNext ), #end#end </p>
+                    #description($entity, "")
+                </div>
+              </div>
+              #if ($item.getPropertyValue("reg:status"))
+              <div class="span2 pull-right">
+                #showstatus($item.getPropertyValue("reg:status"))
+              </div>
+              #end
+            </div>
+          </div>
+        #end
+
+        #set($qparam="&query=$lib.pathEncode($query)")
+        #parse("paging.vm")
+
+    </div>
+
+    <div class="span4">
+        ## Facet browsing support goes here
+    </div>
+  </div>
+
+#else
+  #parse("internal-error.vm")
+#end
+
+
+#parse("footer.vm")

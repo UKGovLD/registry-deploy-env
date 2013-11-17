@@ -1,0 +1,20 @@
+## $model and $node should be bound to the register
+
+## Find the page and order entries
+
+  #if($hasmembers)
+    #set($pageres=$items.get(0).page)
+
+      #parse("paging.vm")
+
+      #parse("register-list-registers.vm")
+      #parse("register-list-delegations.vm")
+      #parse("register-list-reserved.vm")
+      #parse("register-list-members.vm")
+
+## Now showing paging information if necessary
+
+    #set($qparam="")
+    #parse("paging.vm")
+
+  #end
