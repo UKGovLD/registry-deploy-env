@@ -1,6 +1,8 @@
-# registry-deploy-poc
+# registry-deploy-env
 
-Provides configuration, UI templates and bootstraping for the POC version of the registry. 
+Provides configuration, UI templates and bootstraping for the Environment Registry.
+
+This is a manual fork of UKGovLD/registry-deploy-poc
 
 This provides vagrant and aws scripts to simplify creation and management of registry instances.
 
