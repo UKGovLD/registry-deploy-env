@@ -16,7 +16,7 @@
        "api":  "http://purl.org/linked-data/api/vocab#",
        "vann": "http://purl.org/vocab/vann/",
        "reg":  "http://purl.org/linked-data/registry#",
-       "ukreg":    "http://ukgovld-registry.dnsalias.net/"
+       "envreg":    "http://environment.data.gov.uk/registry/"
     },
     "endpoint": "/system/query"
   },

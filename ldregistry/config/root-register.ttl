@@ -15,7 +15,7 @@
 
 @prefix reg:  <http://purl.org/linked-data/registry#> .
 
-@base <http://ukgovld-registry.dnsalias.net/> .
+@base <http://environment.data.gov.uk/registry/> .
 
 <> a reg:Register;
     version:currentVersion <>;
