@@ -8,7 +8,7 @@ apt-get install -y curl chkconfig
 
 # install and configure tomcat
 echo "** Installing java and tomcat"
-apt-get install -y tomcat7
+apt-get install -y tomcat7 language-pack-en
 service tomcat7 stop
 
 # tomcat7 on ubuntu seems hardwired to java-6 so have to dance around this
@@ -29,16 +29,54 @@ service tomcat7 start
 chkconfig tomcat7 on
 
 # Configure runtime areas
-if [ ! -d "/var/opt/ldregistry" ]; then
-  mkdir /var/opt/ldregistry
-  chown tomcat7 /var/opt/ldregistry
-  chgrp tomcat7 /var/opt/ldregistry
+if ! blkid | grep /dev/xvdf; then
+  # No visible attached volume but might not be formatted yet
+  # This will just fail on a local vm
+  mkfs -t ext4 /dev/xvdf 
+fi
+
+if blkid | grep /dev/xvdf; then
+  # We have an attached volume, mount it
+  if ! mount | grep /dev/xvdf ; then
+    echo "/dev/xvdf /mnt ext4 rw 0 0" | tee -a /etc/fstab > /dev/null && mount /mnt  
+  fi
+  # If it's snapshot the ldregistry areas will exist, otherwise create them
+  if [ ! -d /mnt/opt/ldregistry ]; then
+    mkdir /mnt/opt
+    mkdir /mnt/opt/ldregistry
+    chown tomcat7 /mnt/opt/ldregistry
+  fi
+  if [ ! -d /mnt/varopt/ldregistry ]; then
+    mkdir /mnt/varopt
+    mkdir /mnt/varopt/ldregistry
+    chown tomcat7 /mnt/varopt/ldregistry
+  fi
+  if [ ! -d /opt/ldregistry ]; then
+    ln -s /mnt/opt/ldregistry /opt
+  fi
+  if [ ! -d /var/opt/ldregistry ]; then
+    ln -s /mnt/varopt/ldregistry /var/opt
+  fi
+else
+  # No attached volume, just just create empty ldregistry areas
+  if [ ! -d "/opt/ldregistry" ]; then
+    mkdir /opt/ldregistry
+    chown tomcat7 /opt/ldregistry
+  fi
+  if [ ! -d "/var/opt/ldregistry" ]; then
+    mkdir /var/opt/ldregistry
+    chown tomcat7 /var/opt/ldregistry
+  fi
+fi
+# If the static ldregistry area is not already set up then clone from the vagrant synced folder
+if [ ! -d "/opt/ldregistry/conf" ]; then
+  cp -R /vagrant/ldregistry/* /opt/ldregistry
+  chown -R  tomcat7 /opt/ldregistry/*
 fi
 
 if [ ! -d "/var/log/ldregistry" ]; then
   mkdir /var/log/ldregistry
   chown tomcat7 /var/log/ldregistry
-  chgrp tomcat7 /var/log/ldregistry
 fi
 
 # install and configure nginx
@@ -60,10 +98,6 @@ chkconfig nginx on
 
 # Set up configuration area /opt/ldregistry
 echo "** Installing registry application"
-mkdir /opt/ldregistry
-cp -R /vagrant/ldregistry/* /opt/ldregistry
-chown -R  tomcat7 /opt/ldregistry
-
 rm -rf /var/lib/tomcat7/webapps/ROOT*
 curl -4s https://s3-eu-west-1.amazonaws.com/ukgovld/$RELEASE > /var/lib/tomcat7/webapps/ROOT.war
 
