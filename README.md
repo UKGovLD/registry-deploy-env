@@ -1,6 +1,6 @@
 # registry-deploy-poc
 
-Provides configuration, UI templates and boostraping for the POC version of the registry. 
+Provides configuration, UI templates and bootstraping for the POC version of the registry. 
 
 This provides vagrant and aws scripts to simplify creation and management of registry instances.
 
@@ -57,7 +57,7 @@ First create a security group called `Deploy` which provides access to ssh, http
 
 Second ensure you have an installed key pair and a user who has access to that key pair.
 
-Thired create a credentials file which can be used to set the shell environment variables needed by the later scripts. This should look like:
+Third create a credentials file which can be used to set the shell environment variables needed by the later scripts. This should look like:
 
 	export AWS_ACCESS_KEY_ID=XXX
 	export AWS_SECRET_ACCESS_KEY=YYY
@@ -72,7 +72,7 @@ The AWS configuration is designed so that the run time registry information is k
 
 First select or create an EBS volume to use. This might be created from a prior snapshot or might be a brand new volume. Then launch the instance with
 
-    . mycredials.cred
+    . mycredentials.cred
     vagrant up aws --provider=aws  --no-provision
     ./attach-volume.sh VOLUMEID
     vagrant provision aws
