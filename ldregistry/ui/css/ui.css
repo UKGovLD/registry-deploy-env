@@ -3,11 +3,12 @@
  */
 
 body {
-        background: white url(/ui/img/body_bg_big.png) repeat;
+/*        background: white url(/ui/img/body_bg_big.png) repeat; */
         min-height: 600px;
-        margin-top: 40px;
+/*        margin-top: 40px; */
 }
 
+/*
 .container {
         background-color: white;
         -moz-box-shadow: 0 5px 24px #888;
@@ -16,6 +17,7 @@ body {
         padding-left: 10px;
         padding-right: 10px;
 }
+*/
 
 .table {
    margin-bottom: 0em;
@@ -29,7 +31,7 @@ table tr td table {
    margin-top: 1em;
 }
 
-.footer {
+footer {
     font-size: 0.8em;
 }
 

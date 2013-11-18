@@ -17,7 +17,7 @@
     <title>#if($pageTitle) $pageTitle #else Environment Registry #end</title>
     <link type="text/css" rel="stylesheet" href="$uiroot/css/ui.css" />
     <link type="text/css" rel="stylesheet" href="$uiroot/css/jquery.dataTables.css" />
-    <link href="$uiroot/css/bootstrap-editable.css" rel="stylesheet"/>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
 
     #if($extraCSS)
       #foreach($file in $extraCSS.split(","))
@@ -29,3 +29,4 @@
   </head>
 
   <body>
+      <div class="container">

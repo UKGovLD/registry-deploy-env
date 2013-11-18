@@ -1,17 +1,14 @@
-#parse("header.vm")
-#set($nav="admin")
+#set($nav="category")
 #parse("navbar.vm")
 
     <div class="jumbotron">
       <div class="container">
-        <h1>Admin</h1>
+        <h1>Category list</h1>
       </div>
     </div>
 
     <div class="container">
       <div class="row">
-        <p>I am the admin page</p>
+        <p>I am a category list</p>
       </div>
     ## container will be closed by footer
-    
-#parse("footer.vm")

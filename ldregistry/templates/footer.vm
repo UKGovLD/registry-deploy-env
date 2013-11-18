@@ -1,13 +1,13 @@
-    <hr id="footer-line" />
-    <div class="row footer">
-     <div class="pull-right">Developed by <a href="http://www.epimorphics.com/">Epimorphics Ltd</a></div>
-    </div>
-   </div> <!-- End of container -->
+      <hr id="footer-line" />      
+      <footer>
+        <div class="pull-right">Developed by <a href="http://www.epimorphics.com/">Epimorphics Ltd</a></div>
+      </footer>
+    </div> <!-- End of container -->
 
-   <script type="text/javascript" src="$uiroot/js/bootstrap.min.js"></script>
-   <script type="text/javascript" src="$uiroot/js/jquery.dataTables.min.js"></script>
-   <script type="text/javascript" src="$uiroot/js/bootstrap-editable.min.js"></script>
-   <script type="text/javascript" src="$uiroot/js/ui.js"></script>
+    <script type="text/javascript" src="$uiroot/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="$uiroot/js/jquery.dataTables.min.js"></script>
+    <script src="$uiroot/js/bootstrap-editable.min.js"></script>
+    <script type="text/javascript" src="$uiroot/js/ui.js"></script>
     #if($extraJS)
       #foreach($file in $extraJS.split(","))
         <script type="text/javascript" src="$uiroot/js/$file"></script>

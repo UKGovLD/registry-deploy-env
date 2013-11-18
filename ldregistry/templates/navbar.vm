@@ -1,68 +1,35 @@
-
-  <div class="navbar navbar-fixed-top  navbar-inverse">
-    <div class="span1">
-    </div>
-    <div class="navbar-inner">
-      <ul class="nav">
-        <li #if($nav=="root")class="active"#end><a class="brand popinfo" href="/$root" data-trigger="hover" data-placement="bottom"
-            data-content="Return to the registry home page and the root register.">
-         UKGovLD Registry</a></li>
-      </ul>
-      <div class="span1"> </div>
-      <ul class="nav">
-        <li><a href="$uiroot/check" class="popinfo" data-trigger="hover" data-placement="bottom"
-            data-content="Support for checking whether a set of resources have been registered and are current valid.">
-            Check URI</a></li>
-        <li #if($nav=="dataset")class="active"#end><a href="$uiroot/dataset-search" class="popinfo" data-trigger="hover" data-placement="bottom"
-            data-content="Browse the list of registered datasets">
-            Datasets</a></li>
-        <li #if($nav=="admin")class="active"#end><a href="$uiroot/admin" class="popinfo" data-trigger="hover" data-placement="bottom"
-            data-content="General administration of the registry.">
-            Admin</a></li>
-        <li #if($nav=="sparql")class="active"#end><a href="$uiroot/sparql-form" class="popinfo" data-trigger="hover" data-placement="bottom"
-            data-content="Run raw sparql queries.">
-            Sparql</a></li>
-        <li #if($nav=="about")class="active"#end><a href="$uiroot/about">
-            About</a></li>
-      </ul>
-
-      <form action="$uiroot/text-search" method="get" class="navbar-search">
-        <input type="search" class="search-query" placeholder="Search" #if($query)value="$query"#end name="query"/>
-##             <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" />
-      </form>
-
-      #if($subject.isAuthenticated())
-        #set($user=$subject.principal)
-        <ul class="nav pull-right">
-          <li>
-            <span>
-              <span class="nav-text">$user.name</span><i class="icon-user icon-white"></i>
-              <a class="popinfo" data-trigger="hover" data-placement="left"   data-content="Logout"
-                          href="#logout-dialog" role="button" data-toggle="modal"><i class="icon-remove-circle icon-white"></i></a>
-            </span>
-          </li>
-        </ul>
-      #else
-        <ul class="nav pull-right">
-          <li class="popinfo" data-trigger="hover" data-placement="bottom"   data-content="Login to allow access to administration functions.">
-            <a href="$uiroot/login?return=/$uri"><span class="muted">Not logged in</span><i class="icon-user icon-white"></i></a>
-          </li>
-        </ul>
-      #end
-    </div>
+<nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>      
+    </button>
+    <a class="navbar-brand" href="$root">Environment Registry (pilot)</a>
   </div>
 
-  #if($subject.isAuthenticated())
-      <div id="logout-dialog" class="modal hide" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <h3>Do you want to logout?</h3>
-        </div>
-        <div class="modal-body">
-          <form class="form-horizontal" action="/system/security/logout" method="post">
-            <input type="submit" value="Logout" class="btn btn-danger" />
-          </form>
-        </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li #if($nav=="browse")class="active"#end><a href="$uiroot/main?uri=http://environment.data.gov.uk/registry/">Browse</a></li>
+      <li #if($nav=="about")class="active"#end><a href="$uiroot/about">About</a></li>
+      <li #if($nav=="admin")class="active"#end><a href="$uiroot/admin">Admin</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Advanced <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Sparql</a></li>
+          <li><a href="#">Check URI</a></li>
+        </ul>
+      </li>
+    </ul>
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
       </div>
-  #end
-
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div><!-- /.navbar-collapse -->
+</nav>

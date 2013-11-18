@@ -1,0 +1,68 @@
+
+  <div class="navbar navbar-fixed-top  navbar-inverse">
+    <div class="span1">
+    </div>
+    <div class="navbar-inner">
+      <ul class="nav">
+        <li #if($nav=="root")class="active"#end><a class="brand popinfo" href="/$root" data-trigger="hover" data-placement="bottom"
+            data-content="Return to the registry home page and the root register.">
+         UKGovLD Registry</a></li>
+      </ul>
+      <div class="span1"> </div>
+      <ul class="nav">
+        <li><a href="$uiroot/check" class="popinfo" data-trigger="hover" data-placement="bottom"
+            data-content="Support for checking whether a set of resources have been registered and are current valid.">
+            Check URI</a></li>
+        <li #if($nav=="dataset")class="active"#end><a href="$uiroot/dataset-search" class="popinfo" data-trigger="hover" data-placement="bottom"
+            data-content="Browse the list of registered datasets">
+            Datasets</a></li>
+        <li #if($nav=="admin")class="active"#end><a href="$uiroot/admin" class="popinfo" data-trigger="hover" data-placement="bottom"
+            data-content="General administration of the registry.">
+            Admin</a></li>
+        <li #if($nav=="sparql")class="active"#end><a href="$uiroot/sparql-form" class="popinfo" data-trigger="hover" data-placement="bottom"
+            data-content="Run raw sparql queries.">
+            Sparql</a></li>
+        <li #if($nav=="about")class="active"#end><a href="$uiroot/about">
+            About</a></li>
+      </ul>
+
+      <form action="$uiroot/text-search" method="get" class="navbar-search">
+        <input type="search" class="search-query" placeholder="Search" #if($query)value="$query"#end name="query"/>
+##             <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" />
+      </form>
+
+      #if($subject.isAuthenticated())
+        #set($user=$subject.principal)
+        <ul class="nav pull-right">
+          <li>
+            <span>
+              <span class="nav-text">$user.name</span><i class="icon-user icon-white"></i>
+              <a class="popinfo" data-trigger="hover" data-placement="left"   data-content="Logout"
+                          href="#logout-dialog" role="button" data-toggle="modal"><i class="icon-remove-circle icon-white"></i></a>
+            </span>
+          </li>
+        </ul>
+      #else
+        <ul class="nav pull-right">
+          <li class="popinfo" data-trigger="hover" data-placement="bottom"   data-content="Login to allow access to administration functions.">
+            <a href="$uiroot/login?return=/$uri"><span class="muted">Not logged in</span><i class="icon-user icon-white"></i></a>
+          </li>
+        </ul>
+      #end
+    </div>
+  </div>
+
+  #if($subject.isAuthenticated())
+      <div id="logout-dialog" class="modal hide" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3>Do you want to logout?</h3>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" action="/system/security/logout" method="post">
+            <input type="submit" value="Logout" class="btn btn-danger" />
+          </form>
+        </div>
+      </div>
+  #end
+
