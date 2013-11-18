@@ -1,0 +1,204 @@
+/**
+ * UI additions to adapt bootstrap for registry UI. Dave Reynolds, 2013
+ */
+
+body {
+        background: white url(/ui/img/body_bg_big.png) repeat;
+        min-height: 600px;
+        margin-top: 40px;
+}
+
+.container {
+        background-color: white;
+        -moz-box-shadow: 0 5px 24px #888;
+        -webkit-box-shadow: 0 5px 24px #888;
+        box-shadow: 0 5px 24px #888;
+        padding-left: 10px;
+        padding-right: 10px;
+}
+
+.table {
+   margin-bottom: 0em;
+}
+
+table tr td table {
+   margin-bottom: 0em;
+}
+
+.space-above {
+   margin-top: 1em;
+}
+
+.footer {
+    font-size: 0.8em;
+}
+
+.nav-text {
+    color: white;
+}
+
+.panel {
+/*   font-size: 80%;
+   line-spacing: 80%;  */
+}
+
+.panel-head {
+    background-color:  #222222;
+    color: lightgrey;
+    text-align: center;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 30px;
+    padding: 3px;
+}
+
+.panel-body {
+   border-left: 5px solid lightgrey;
+   border-right: 5px solid lightgrey;
+   border-bottom: 5px solid lightgrey;
+   padding: 4px;
+}
+
+.result-blob {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    margin-bottom: 20px;
+    /* margin-right: 5px; */
+}
+
+.blob {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.blob-inner {
+    padding: 5px;
+}
+
+.pale-blue {
+    background-color:  #d9f0f9;
+}
+
+.pale-orange {
+    background-color:  #f9dfc2;
+}
+
+.formats {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 2px solid lightgrey;
+    margin-bottom: 10px;
+    padding: 5px;
+   font-size: 80%;
+   line-spacing: 80%;
+}
+
+.formats dl {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.formats table tr td {
+    vertical-align: middle;
+}
+
+.test-blob {
+    background-color: grey;
+    text-align: center;
+ }
+
+ .test-border {
+    border: 2px solid lightgrey;
+ }
+
+ .tab-content {
+    border-left: 1px solid lightgrey;
+    border-right: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
+    padding:  5px;
+ }
+
+.nav-compact {
+    margin-bottom: 0px;
+}
+
+#registration-dialog {
+    width: 700px;
+    top: 5%;
+    left: 40%;
+}
+
+#registration-body {
+   min-height: 500px;
+   min-width: 600px;
+}
+
+.modal.update {
+    width: 800px;
+    top: 5%;
+    left: 30%;
+}
+
+.modal-body.update {
+    max-height: 650px;
+}
+
+/* Modal pages */
+.modal-page-panel {
+    z-index: 1050;
+    background-color: white;
+    position: relative;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.modal-page-head {
+    padding: 5px 10px 5px 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-page-body {
+    padding: 5px 10px 5px 10px;
+}
+
+.modal-page-footer {
+    padding: 5px 10px 5px 10px;
+    background-color: #f5f5f5;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: 1px solid #ddd;
+    box-shadow: inset 0 1px 0 white;
+    -webkit-box-shadow: inset 0 1px 0 white;
+    -moz-box-shadow: inset 0 1px 0 white;
+    min-height: 30px;
+}
+
+td.align-right {
+    text-align: right;
+}
+
+.rhs {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 2px solid lightgrey;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+   font-size: 90%;
+   line-spacing: 80%;
+}
+
