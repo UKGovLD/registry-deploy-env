@@ -8,12 +8,8 @@
 @prefix ldp:  <http://www.w3.org/ns/ldp#> .
 @prefix reg:  <http://purl.org/linked-data/registry#> .
 @prefix ui:   <http://purl.org/linked-data/registry-ui#> .
-@prefix cat:  <http://environment.data.gov.uk/registry/system/categories/> .
 
-<form-templates> a reg:Register ;
-    rdfs:label "form templates"@en;
-    dct:description "Set of form templates which are used to define manual registration forms"@en;
-    reg:owner      <http://example.com/department> ;
-    reg:manager   <http://example.com/registryManagementLtd> ;
-    reg:category  cat:system;
+<system> a skos:Concept;
+    rdfs:label "system"@en;
+    dct:description "Category of registerse used to guide system operation"@en;
     .

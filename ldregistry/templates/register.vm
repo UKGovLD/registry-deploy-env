@@ -1,0 +1,89 @@
+## Page view for a register
+## Expects $register to the register itself and $itemForReg to be the RegisterItem for the register (within its parent)
+
+## TODO select type specific views
+
+  #parse("breadcrumbs.vm")
+  <div class="row">
+    <div class="col-md-6">
+      ## LHS column with text and description
+      <h1>Collection: $register.name</h1>
+       #description($register, "<p><em>no description supplied</em></p>")
+    </div>
+    <div class="col-md-6">
+      ## RHS column with tabbed access to metadata and admin
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#detailsTab" data-toggle="tab">Summary</a></li>
+        <li><a href="#propertiesTab" data-toggle="tab">All properties</a></li>
+        <li><a href="#adminTab" data-toggle="tab">Admin</a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane active" id="detailsTab">
+          <table class="table table-striped table-condensed">
+            #metadatarow("is a", $register.listPropertyValues("rdf:type"))
+            #metadatarow("category", $register.listPropertyValues("reg:category"))
+            #metadatarow("owned by", $register.listPropertyValues("reg:owner"))
+            #metadatarow("license", $register.listPropertyValues("dct:license"))
+            #metadatarow("last changed on", $register.listPropertyValues("dct:modified"))
+            #metadatarow("accepted  on", $itemForReg.listPropertyValues("dct:dateAccepted"))
+          </table>
+        </div>
+        <div class="tab-pane" id="propertiesTab">
+          #restable($register, "table-striped table-condensed")
+        </div>
+        <div class="tab-pane" id="adminTab">admin</div>
+      </div>
+    </div>
+  </div>
+
+#set($items = $model.querySelectW("SELECT * where {?page a ldp:Page; api:items ?items.}"))
+#if (!$items.isEmpty())
+  #set($members=$items.get(0).items.asList())
+  #set($hasmembers=!$members.isEmpty())
+#else
+  #set($hasmembers=false)
+#end
+
+#if(!$hasmembers)
+  <h2>... currently empty</h2>
+#else
+  <h2>Contents</h2>
+
+  #set($pageres=$items.get(0).page)
+  #parse("paging.vm")
+
+  <div class="row">
+  	<div class="col-md-10 col-md-offset-1">
+  	  <table class="table table-striped table-bordered">
+  	  	<thead>
+  	      <tr>
+  	      	<th>Name</th>
+  	      	<th>Notation</th>
+  	      	<th>Description</th>
+  	      	<th>Types</th>
+  	      	<th>Status</th>
+  	      </tr>
+  	  	</thead>
+
+  	  	<tbody>
+        #foreach($itemMember in $lib.reg.asItemList($members))
+          #set($item = $itemMember.item)
+          #set($member = $itemMember.member)
+          <tr>
+          	## When might we not have an $item?
+          	<td><a href="#linkhref($item)" title="$item.uRI">$member.name</a></td>
+          	<td>$item.getPropertyValue("reg:notation").lexicalForm</td>
+            <td>#tdescription($member,"",60)</td>
+            <td>#foreach($ty in $member.listPropertyValues("rdf:type"))#linkfor($ty)#if( $foreach.hasNext ), #end#end</td>
+            <td>#showstatus($item.getPropertyValue("reg:status"))</td>
+          </tr>
+        #end
+        </tbody>
+  	  </table>
+  	</div>
+  </div>
+
+  #parse("paging.vm")  
+#end

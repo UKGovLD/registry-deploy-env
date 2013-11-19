@@ -1,0 +1,605 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix reg:     <http://purl.org/linked-data/registry#> .
+@prefix ldp:     <http://www.w3.org/ns/ldp#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix bufr4-core: <http://test.wmocodes.info/bufr4/schema/core#> .
+
+[]
+    a reg:RegisterItem ;
+    reg:definition
+        [ reg:entity <0> ] ;
+    reg:status reg:statusStable ;
+    reg:notation 0 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2576 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+<0>
+    a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+    rdfs:label "Sky clear"@en ;
+    dct:description "Sky clear (0 oktas)."@en ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition
+        [ reg:entity <1> ] ;
+    reg:status reg:statusStable ;
+    reg:notation 1 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2577 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+<1>
+    a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+    rdfs:label "Few"@en ;
+    dct:description "Few (1 - 2 oktas)."@en ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition
+        [ reg:entity <2> ] ;
+    reg:status reg:statusStable ;
+    reg:notation 2 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2578 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+<2>
+    a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+    rdfs:label "Scattered"@en ;
+    dct:description "Scattered (3 - 4 oktas)."@en ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition
+        [ reg:entity <3> ] ;
+    reg:status reg:statusStable ;
+    reg:notation 3 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2579 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+<3>
+    a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+    rdfs:label "Broken"@en ;
+    dct:description "Broken (5 - 7 oktas)."@en ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition
+        [ reg:entity <4> ] ;
+    reg:status reg:statusStable ;
+    reg:notation 4 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2580 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+<4>
+    a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+    rdfs:label "Overcast"@en ;
+    dct:description "Overcast (8 oktas)."@en ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition [
+        reg:entity [
+            a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+            rdfs:label "Reserved"@en ;
+            dct:description "Reserved for future use."@en ;
+        ] ;
+    ] ;
+    reg:status reg:statusReserved ;
+    reg:notation 5 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2581 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition
+        [ reg:entity <6> ] ;
+    reg:status reg:statusStable ;
+    reg:notation 6 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2582 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+<6>
+    a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+    rdfs:label "Scattered/broken"@en ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition
+        [ reg:entity <7> ] ;
+    reg:status reg:statusStable ;
+    reg:notation 7 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2583 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+<7>
+    a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+    rdfs:label "Broken/overcast"@en ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition
+        [ reg:entity <8> ] ;
+    reg:status reg:statusStable ;
+    reg:notation 8 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2584 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+<8>
+    a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+    rdfs:label "Isolated"@en ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition
+        [ reg:entity <9> ] ;
+    reg:status reg:statusStable ;
+    reg:notation 9 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2585 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+<9>
+    a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+    rdfs:label "Isolated embedded"@en ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition
+        [ reg:entity <10> ] ;
+    reg:status reg:statusStable ;
+    reg:notation 10 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2586 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+<10>
+    a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+    rdfs:label "Occasional"@en ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition
+        [ reg:entity <11> ] ;
+    reg:status reg:statusStable ;
+    reg:notation 11 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2587 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+<11>
+    a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+    rdfs:label "Occasional embedded"@en ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition
+        [ reg:entity <12> ] ;
+    reg:status reg:statusStable ;
+    reg:notation 12 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2588 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+<12>
+    a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+    rdfs:label "Frequent"@en ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition
+        [ reg:entity <13> ] ;
+    reg:status reg:statusStable ;
+    reg:notation 13 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2589 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+<13>
+    a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+    rdfs:label "Dense"@en ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition
+        [ reg:entity <14> ] ;
+    reg:status reg:statusStable ;
+    reg:notation 14 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2590 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+<14>
+    a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+    rdfs:label "Layers"@en ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition
+        [ reg:entity <15> ] ;
+    reg:status reg:statusStable ;
+    reg:notation 15 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2591 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+<15>
+    a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+    rdfs:label "Obscured (OBSC)"@en ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition
+        [ reg:entity <16> ] ;
+    reg:status reg:statusStable ;
+    reg:notation 16 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2592 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+<16>
+    a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+    rdfs:label "Embedded (EMBD)"@en ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition
+        [ reg:entity <17> ] ;
+    reg:status reg:statusStable ;
+    reg:notation 17 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2593 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+<17>
+    a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+    rdfs:label "Frequent embedded"@en ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition [
+        reg:entity [
+            a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+            rdfs:label "Reserved"@en ;
+            dct:description "Reserved for future use."@en ;
+        ] ;
+    ] ;
+    reg:status reg:statusReserved ;
+    reg:notation 18 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2594 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition [
+        reg:entity [
+            a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+            rdfs:label "Reserved"@en ;
+            dct:description "Reserved for future use."@en ;
+        ] ;
+    ] ;
+    reg:status reg:statusReserved ;
+    reg:notation 19 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2594 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition [
+        reg:entity [
+            a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+            rdfs:label "Reserved"@en ;
+            dct:description "Reserved for future use."@en ;
+        ] ;
+    ] ;
+    reg:status reg:statusReserved ;
+    reg:notation 20 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2594 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition [
+        reg:entity [
+            a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+            rdfs:label "Reserved"@en ;
+            dct:description "Reserved for future use."@en ;
+        ] ;
+    ] ;
+    reg:status reg:statusReserved ;
+    reg:notation 21 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2594 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition [
+        reg:entity [
+            a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+            rdfs:label "Reserved"@en ;
+            dct:description "Reserved for future use."@en ;
+        ] ;
+    ] ;
+    reg:status reg:statusReserved ;
+    reg:notation 22 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2594 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition [
+        reg:entity [
+            a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+            rdfs:label "Reserved"@en ;
+            dct:description "Reserved for future use."@en ;
+        ] ;
+    ] ;
+    reg:status reg:statusReserved ;
+    reg:notation 23 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2594 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition [
+        reg:entity [
+            a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+            rdfs:label "Reserved"@en ;
+            dct:description "Reserved for future use."@en ;
+        ] ;
+    ] ;
+    reg:status reg:statusReserved ;
+    reg:notation 24 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2594 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition [
+        reg:entity [
+            a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+            rdfs:label "Reserved"@en ;
+            dct:description "Reserved for future use."@en ;
+        ] ;
+    ] ;
+    reg:status reg:statusReserved ;
+    reg:notation 25 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2594 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition [
+        reg:entity [
+            a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+            rdfs:label "Reserved"@en ;
+            dct:description "Reserved for future use."@en ;
+        ] ;
+    ] ;
+    reg:status reg:statusReserved ;
+    reg:notation 26 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2594 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition [
+        reg:entity [
+            a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+            rdfs:label "Reserved"@en ;
+            dct:description "Reserved for future use."@en ;
+        ] ;
+    ] ;
+    reg:status reg:statusReserved ;
+    reg:notation 27 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2594 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition [
+        reg:entity [
+            a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+            rdfs:label "Reserved"@en ;
+            dct:description "Reserved for future use."@en ;
+        ] ;
+    ] ;
+    reg:status reg:statusReserved ;
+    reg:notation 28 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2594 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition [
+        reg:entity [
+            a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+            rdfs:label "Reserved"@en ;
+            dct:description "Reserved for future use."@en ;
+        ] ;
+    ] ;
+    reg:status reg:statusReserved ;
+    reg:notation 29 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2594 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition [
+        reg:entity [
+            a <http://test.wmocodes.info/common/c-15/ae/cloudDistributionForAviation> ;
+            rdfs:label "Reserved"@en ;
+            dct:description "Reserved for future use."@en ;
+        ] ;
+    ] ;
+    reg:status reg:statusReserved ;
+    reg:notation 30 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2594 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+[]
+    a reg:RegisterItem ;
+    reg:definition
+        [ reg:entity <31> ] ;
+    reg:itemClass skos:Concept ;
+    reg:status reg:statusStable ;
+    reg:notation 31 ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    bufr4-core:No 2595 ;
+    bufr4-core:FXY "020008" ;
+    bufr4-core:Status bufr4-core:statusOperational ;
+    .
+<31>
+    a skos:Concept ;
+    rdfs:label "Missing value"@en ;
+    .

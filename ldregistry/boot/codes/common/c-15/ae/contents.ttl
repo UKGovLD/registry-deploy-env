@@ -1,0 +1,224 @@
+@prefix qudt-quantity:  <http://qudt.org/vocab/quantity#> .
+@prefix common-core:  <http://test.wmocodes.info/common/schema/core#> .
+@prefix qudt:    <http://qudt.org/schema/qudt#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix qudt-unit:  <http://qudt.org/vocab/unit#> .
+@prefix common-units:  <http://test.wmocodes.info/common/schema/units#> .
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix reg:     <http://purl.org/linked-data/registry#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix ldp:     <http://www.w3.org/ns/ldp#> .
+
+<_cloudDistributionForAviation>
+    a reg:RegisterItem ;
+    common-core:Status common-core:statusValidation ;
+    reg:definition [ reg:entity <cloudDistributionForAviation> ] ;
+    reg:itemClass owl:Class ;
+    reg:notation "cloudDistributionForAviation" ;
+    reg:register <http://test.wmocodes.info/common/c-15/ae> ;
+    reg:status reg:statusExperimental ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    .
+<cloudDistributionForAviation>
+    a owl:Class ;
+    rdfs:label "Cloud distribution for aviation"@en ;
+    rdfs:subClassOf skos:Concept ;
+    .
+<_significantWeather>
+    a reg:RegisterItem ;
+    common-core:Status common-core:statusValidation ;
+    reg:definition [ reg:entity <significantWeather> ] ;
+    reg:itemClass owl:Class ;
+    reg:notation "significantWeather" ;
+    reg:register <http://test.wmocodes.info/common/c-15/ae> ;
+    reg:status reg:statusExperimental ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    .
+<significantWeather>
+    a owl:Class ;
+    rdfs:label "Significant present or forecast weather"@en ;
+    dct:description "Weather of significance to aeronautical operations observered at or forecast for an aerodrome."@en ;
+    rdfs:subClassOf skos:Concept ;
+    .
+<_significantRecentWeatherPhenomenon>
+    a reg:RegisterItem ;
+    common-core:Status common-core:statusValidation ;
+    reg:definition [ reg:entity <significantRecentWeatherPhenomenon> ] ;
+    reg:itemClass owl:Class ;
+    reg:notation "significantRecentWeatherPhenomenon" ;
+    reg:register <http://test.wmocodes.info/common/c-15/ae> ;
+    reg:status reg:statusExperimental ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    .
+<significantRecentWeatherPhenomenon>
+    a owl:Class ;
+    rdfs:label "Significant recent weather"@en ;
+    dct:description "Weather of significance to aeronautical operations observered at an aerodrome within the previous hour."@en ;
+    rdfs:subClassOf skos:Concept ;
+    .
+<_prevailingHorizontalVisibility>
+    a reg:RegisterItem ;
+    common-core:Status common-core:statusValidation ;
+    reg:definition [ reg:entity <prevailingHorizontalVisibility> ] ;
+    reg:itemClass qudt:QuantityKind , qudt:SpaceAndTimeQuantityKind ;
+    reg:notation "prevailingHorizontalVisibility" ;
+    reg:register <http://test.wmocodes.info/common/c-15/ae> ;
+    reg:status reg:statusExperimental ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    .
+<prevailingHorizontalVisibility>
+    a qudt:QuantityKind , qudt:SpaceAndTimeQuantityKind ;
+    rdfs:label "Prevailing horizontal visibility"@en ;
+    dct:description "The greatest visibility value observed which is reached within at least half the horizon circle or within at least half of the surface of the aerodrome. These areas could comprise contiguous or non-contiguous sectors."@en ;
+    qudt:generalization qudt-quantity:Length ;
+    .
+<_runwayVisualRangeRvr>
+    a reg:RegisterItem ;
+    common-core:Status common-core:statusValidation ;
+    reg:definition [ reg:entity <runwayVisualRangeRvr> ] ;
+    reg:itemClass qudt:QuantityKind , qudt:SpaceAndTimeQuantityKind ;
+    reg:notation "runwayVisualRangeRvr" ;
+    reg:register <http://test.wmocodes.info/common/c-15/ae> ;
+    reg:status reg:statusExperimental ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    .
+<runwayVisualRangeRvr>
+    a qudt:QuantityKind , qudt:SpaceAndTimeQuantityKind ;
+    rdfs:label "Runway visual range (RVR)"@en ;
+    dct:description "The range [distance] over which the pilot of an aircraft on the centre line of a runway can see the runway surface markings or the lights delineating the runway or identifying its centre line."@en ;
+    qudt:generalization qudt-quantity:Length ;
+    .
+<_verticalVisibility>
+    a reg:RegisterItem ;
+    common-core:Status common-core:statusValidation ;
+    reg:definition [ reg:entity <verticalVisibility> ] ;
+    reg:itemClass qudt:QuantityKind , qudt:SpaceAndTimeQuantityKind ;
+    reg:notation "verticalVisibility" ;
+    reg:register <http://test.wmocodes.info/common/c-15/ae> ;
+    reg:status reg:statusExperimental ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    .
+<verticalVisibility>
+    a qudt:QuantityKind , qudt:SpaceAndTimeQuantityKind ;
+    rdfs:label "Vertical visibility"@en ;
+    dct:description "Vertical visibility is defined as the vertical visual range into an obscuring medium."@en ;
+    qudt:generalization qudt-quantity:Length ;
+    .
+<_minimumHorizontalVisibility>
+    a reg:RegisterItem ;
+    common-core:Status common-core:statusValidation ;
+    reg:definition [ reg:entity <minimumHorizontalVisibility> ] ;
+    reg:itemClass qudt:QuantityKind , qudt:SpaceAndTimeQuantityKind ;
+    reg:notation "minimumHorizontalVisibility" ;
+    reg:register <http://test.wmocodes.info/common/c-15/ae> ;
+    reg:status reg:statusExperimental ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    .
+<minimumHorizontalVisibility>
+    a qudt:QuantityKind , qudt:SpaceAndTimeQuantityKind ;
+    rdfs:label "Minimum horizontal visibility (for aeronautical purposes)"@en ;
+    dct:description "Visibility for aeronautical purposes; the greater of: (a) the greatest distance at which a black object of suitable dimensions, situated near the ground, can be seen and recognised when observed against a bright background; or (b) the greatest distance at which lights in the vicinity of 1000 candelas can be seen and identified against an unlit background."@en ;
+    qudt:generalization qudt-quantity:Length ;
+    .
+<_depthOfRunwayDeposit>
+    a reg:RegisterItem ;
+    common-core:Status common-core:statusValidation ;
+    reg:definition [ reg:entity <depthOfRunwayDeposit> ] ;
+    reg:itemClass qudt:QuantityKind , qudt:SpaceAndTimeQuantityKind ;
+    reg:notation "depthOfRunwayDeposit" ;
+    reg:register <http://test.wmocodes.info/common/c-15/ae> ;
+    reg:status reg:statusExperimental ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    .
+<depthOfRunwayDeposit>
+    a qudt:QuantityKind , qudt:SpaceAndTimeQuantityKind ;
+    rdfs:label "Depth of runway deposit"@en ;
+    dct:description "Depth of deposit on surface of runway."@en ;
+    qudt:generalization qudt-quantity:Length ;
+    .
+<_runwayFrictionCoefficient>
+    a reg:RegisterItem ;
+    common-core:Status common-core:statusValidation ;
+    reg:definition [ reg:entity <runwayFrictionCoefficient> ] ;
+    reg:itemClass qudt:QuantityKind ;
+    reg:notation "runwayFrictionCoefficient" ;
+    reg:register <http://test.wmocodes.info/common/c-15/ae> ;
+    reg:status reg:statusExperimental ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    .
+<runwayFrictionCoefficient>
+    a qudt:QuantityKind ;
+    rdfs:label "Runway friction coefficient"@en ;
+    dct:description "Quantitative assessment of friction coefficient of runway surface."@en ;
+    qudt:generalization qudt-quantity:DimensionlessRatio ;
+    .
+<_runwayContamination>
+    a reg:RegisterItem ;
+    common-core:Status common-core:statusValidation ;
+    reg:definition [ reg:entity <runwayContamination> ] ;
+    reg:itemClass qudt:QuantityKind ;
+    reg:notation "runwayContamination" ;
+    reg:register <http://test.wmocodes.info/common/c-15/ae> ;
+    reg:status reg:statusExperimental ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    .
+<runwayContamination>
+    a qudt:QuantityKind ;
+    rdfs:label "Runway contamination"@en ;
+    dct:description "Proportion of runway surface that is contaminated - expressed as a percentage of the total runway area."@en ;
+    qudt:generalization qudt-quantity:DimensionlessRatio ;
+    .
+<_runwayDeposits>
+    a reg:RegisterItem ;
+    common-core:Status common-core:statusValidation ;
+    reg:definition [ reg:entity <runwayDeposits> ] ;
+    reg:itemClass owl:Class ;
+    reg:notation "runwayDeposits" ;
+    reg:register <http://test.wmocodes.info/common/c-15/ae> ;
+    reg:status reg:statusExperimental ;
+    reg:submitter
+        [ foaf:name "Jeremy Tandy" ;
+          foaf:openid <https://profiles.google.com/101323394574484397758>
+        ] ;
+    .
+<runwayDeposits>
+    a owl:Class ;
+    rdfs:label "Runway deposits"@en ;
+    dct:description "Type of deposit on runway."@en ;
+    rdfs:subClassOf skos:Concept ;
+    .

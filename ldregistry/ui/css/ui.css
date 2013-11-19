@@ -32,37 +32,14 @@ table tr td table {
 }
 
 footer {
-    font-size: 0.8em;
+  font-size: 0.8em;
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
 }
 
 .nav-text {
     color: white;
-}
-
-.panel {
-/*   font-size: 80%;
-   line-spacing: 80%;  */
-}
-
-.panel-head {
-    background-color:  #222222;
-    color: lightgrey;
-    text-align: center;
-    -webkit-border-top-left-radius: 5px;
-    -webkit-border-top-right-radius: 5px;
-    -moz-border-radius-topleft: 5px;
-    -moz-border-radius-topright: 5px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    height: 30px;
-    padding: 3px;
-}
-
-.panel-body {
-   border-left: 5px solid lightgrey;
-   border-right: 5px solid lightgrey;
-   border-bottom: 5px solid lightgrey;
-   padding: 4px;
 }
 
 .result-blob {

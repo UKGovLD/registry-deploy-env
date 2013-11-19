@@ -10,6 +10,7 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix reg:  <http://purl.org/linked-data/registry#> .
 @prefix ui:   <http://purl.org/linked-data/registry-ui#> .
+@prefix cat:  <http://environment.data.gov.uk/registry/system/categories/> .
 
 <prefixes> a reg:Register;
     rdfs:label "prefixes"@en;
@@ -17,4 +18,5 @@
     reg:owner      <http://example.com/UKLocation> ;
     reg:manager   <http://www.epimorphics.com/#id> ;
     reg:containedItemClass owl:Ontology;
+    reg:category  cat:system;
     .

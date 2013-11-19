@@ -6,10 +6,11 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix reg:  <http://purl.org/linked-data/registry#> .
+@prefix cat:  <http://environment.data.gov.uk/registry/system/categories/> .
 
 <bulkCollectionTypes> a reg:Register;
     rdfs:label "bulk collection types"@en;
     dct:description "Register of bulk collection types"@en;
     reg:owner      <http://example.com/UKLocation> ;
-    reg:manager   <http://www.epimorphics.com/#id> ;
+    reg:category  cat:system;
     .

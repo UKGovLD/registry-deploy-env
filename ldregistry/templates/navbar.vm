@@ -5,10 +5,9 @@
       <span class="sr-only">Toggle navigation</span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
       <span class="icon-bar"></span>      
     </button>
-    <a class="navbar-brand" href="$root">Environment Registry (pilot)</a>
+    <a class="navbar-brand" href="$root">Environment Registry (beta)</a>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
@@ -16,10 +15,10 @@
     <ul class="nav navbar-nav">
       <li #if($nav=="browse")class="active"#end><a href="$uiroot/main?uri=http://environment.data.gov.uk/registry/">Browse</a></li>
       <li #if($nav=="about")class="active"#end><a href="$uiroot/about">About</a></li>
-      <li #if($nav=="admin")class="active"#end><a href="$uiroot/admin">Admin</a></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Advanced <b class="caret"></b></a>
         <ul class="dropdown-menu">
+          <li #if($nav=="admin")class="active"#end><a href="$uiroot/admin">Admin</a></li>
           <li><a href="#">Sparql</a></li>
           <li><a href="#">Check URI</a></li>
         </ul>
