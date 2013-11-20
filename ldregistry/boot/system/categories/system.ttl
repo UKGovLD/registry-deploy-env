@@ -11,5 +11,5 @@
 
 <system> a skos:Concept;
     rdfs:label "system"@en;
-    dct:description "Category of registerse used to guide system operation"@en;
+    dct:description "Category of registers used to guide system operation"@en;
     .

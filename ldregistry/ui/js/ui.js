@@ -22,14 +22,15 @@ $(function() {
     processQueryForms();
 
     // Set up ajax loading tabs
-    $('.action-tab').bind('show', function(e) {
+    $('.action-tab').bind('show.bs.tab', function(e) {
         var pattern=/#.+/gi
         var contentID = e.target.toString().match(pattern)[0];
         var action = $(contentID).attr('data-action');
         var uri = $(contentID).attr('data-uri');
+        var uiroot = $(contentID).attr('data-uiroot');
         if (action) {
           //var url = '$uiroot/' + action +'?uri=$lib.pathEncode($uri)&requestor=$requestor';
-          var url = '/ui/' + action + '?uri=' + uri;
+          var url = uiroot + '/' + action + '?uri=' + uri;
           var args = $(contentID).attr('data-args');
           if (args) {
              url = url + "&" + args;

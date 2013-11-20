@@ -1,5 +1,6 @@
+## View $entity as a simple resource, we can't find a corresponding register item
  <div class="row">
-  <div class="span8">
+  <div class="col-md-8">
 
     <h1>Resource: $entity.name</h1>
     <p><strong>URI:</strong> <a href="$entity.uRI">$entity.uRI</a> </p>

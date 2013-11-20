@@ -24,7 +24,7 @@
         <link type="text/css" rel="stylesheet" href="$uiroot/css/$file" />
       #end
     #end
-    <script type="text/javascript" src="$uiroot/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="$uiroot/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="$uiroot/js/jquery.form.js"></script>
   </head>
 

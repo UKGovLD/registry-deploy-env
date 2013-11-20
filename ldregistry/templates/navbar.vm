@@ -13,7 +13,7 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-      <li #if($nav=="browse")class="active"#end><a href="$uiroot/main?uri=http://environment.data.gov.uk/registry/">Browse</a></li>
+      <li #if($nav=="browse")class="active"#end><a href="$root?_browse=true">Browse</a></li>
       <li #if($nav=="about")class="active"#end><a href="$uiroot/about">About</a></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Advanced <b class="caret"></b></a>

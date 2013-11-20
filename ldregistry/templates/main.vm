@@ -1,10 +1,10 @@
 #if($uri)#set($pageTitle="Environment Registry: $uri")#end
 #parse("header.vm")
 
-#if($uri.isEmpty())
-  #parse("page-category.vm")
-#else
+#if(!$uri.isEmpty() || ${_browse})
   #parse("page-deref.vm")
+#else
+  #parse("page-category.vm")
 #end
 
 #parse("footer.vm")

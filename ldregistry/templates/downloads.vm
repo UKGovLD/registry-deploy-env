@@ -1,0 +1,17 @@
+          <h3>Download formats available</h3>
+          <table class="table table-condensed">
+            <tbody>
+              <tr>
+                <td>RDF ttl</td><td><a href="#linkhref($entity)?_format=ttl">plain</a></td><td><a href="#linkhref($entity)?_format=ttl&_view=with_metadata">with metadata</a></td>
+              </tr>
+              <tr>  
+                <td>RDF/XML</td><td><a href="#linkhref($entity)?_format=rdf">plain</a></td><td><a href="#linkhref($entity)?_format=rdf&_view=with_metadata">with metadata</a></td>
+              </tr>
+              <tr>  
+                <td>JSON-LD</td><td><a href="#linkhref($entity)?_format=jsonld">plain</a></td><td><a href="#linkhref($entity)?_format=jsonld&_view=with_metadata">with metadata</a></td>
+              </tr>
+              <tr>
+                <td>CSV</td><td>TBD</td>
+              </tr>
+            </tbody>
+          </table>

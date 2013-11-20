@@ -1,0 +1,75 @@
+## Invoked for both managed entities and for items with $entity and $item both set
+
+## Bind $uri to the path for $item so the general action-tab machinery (in footer.vm) works uniformly
+#set($uri = $item.uRI.substring($registry.baseURI.length()))
+#set($uri = $uri.replaceAll("^/", ""))
+
+  #parse("breadcrumbs.vm")
+  <div class="row">
+    <div class="col-md-11">
+      <h1>Entry: $entity.name #if($versionNumber)- showing version $versionNumber#end</h1>
+    </div>
+    <div class="col-md-1">
+      #showstatus($item.getPropertyValue("reg:status"))
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      ## LHS column with text and description
+      <p><strong>URI:</strong>  <a href="#linkhref($entity)" title="$entity.uRI">$entity.uRI</a> </p>
+
+      #description($entity, "<p><em>no description supplied</em></p>")
+
+      #set($template = $lib.reg.templateFor($entity))
+      #if($template)
+        ## TODO this is not the right place for the template
+        #parse($template)
+      #else
+        #restable($entity, "table-striped table-condensed table-bordered")
+      #end
+    </div>
+    <div class="col-md-6">
+      ## RHS column with tabbed access to metadata and admin
+      <ul class="nav nav-tabs action-tab">
+        <li class="active"><a href="#detailsTab" data-toggle="tab">Metadata</a></li>
+        #if($template)
+          <li><a href="#propertiesTab" data-toggle="tab">All properties</a></li>
+        #end
+        <li><a href="#historyTab" data-toggle="tab">History</a></li>
+        <li><a href="#allmetadataTab" data-toggle="tab">All metadata <img src="$uiroot/img/molecule-small-green.png"></img> </a></li>
+        <li><a href="#downloadsTab" data-toggle="tab"><span class="glyphicon glyphicon-cloud-download"></span></a></li>
+        <li><a href="#adminTab" data-toggle="tab"><span class="glyphicon glyphicon-wrench"></span></a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane active" id="detailsTab">
+          <table class="table table-condensed">
+            #metadatarow("is a", $entity.listPropertyValues("rdf:type"))
+            #metadatarow("category", $item.listPropertyValues("reg:category"))
+            #metadatarow("owned by", $item.listPropertyValues("reg:owner"))
+            #metadatarow("last changed on", $item.listPropertyValues("dct:modified"))
+            #nmetadatarow("submitted by", $item.listPropertyValues("reg:submitter"))
+            #metadatarow("accepted  on", $item.listPropertyValues("dct:dateAccepted"))
+          </table>
+        </div>
+        <div class="tab-pane" id="downloadsTab">
+          #parse("downloads.vm")
+        </div>
+        <div class="tab-pane" id="propertiesTab">
+          <h3>All the properties of the entity</h3>
+          #restable($entity, "table-striped table-condensed")
+        </div>
+        <div class="tab-pane" id="historyTab" data-action="showhistory" data-uri='$uri' data-uiroot='$uiroot'>
+           Pane is loading ...
+        </div>
+        <div class="tab-pane" id="allmetadataTab">     
+          <h3>All registration metadata </h3>     
+          #restable($item, "table-striped table-condensed")
+        </div>
+        <div class="tab-pane" id="adminTab">
+          <h3>Administration actions</h3>
+        </div>
+      </div>
+    </div>
+  </div>
