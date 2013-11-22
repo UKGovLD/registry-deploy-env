@@ -15,7 +15,7 @@
 @prefix reg:  <http://purl.org/linked-data/registry#> .
 @prefix cat:  <http://environment.data.gov.uk/registry/system/categories/> .
 
-<categories> a reg:Register, skos:ConceptScheme;
+<categories> a reg:Register, skos:Collection;
     rdfs:label "Categories"@en;
     dct:description "Set of categories use to label and organize the different collections. Provides the information architecture to help with locating relevant collections. This is an experimental feature of the Enviornment registry and the categories themselves are subject to change."@en;
     reg:owner      <http://example.com/Defra> ;

@@ -1,0 +1,113 @@
+## Parameters:
+##    $return the page to return to (or is that just referrer)
+
+#set($pageTitle="Registry login")
+
+#parse("header.vm")
+#parse("navbar.vm")
+
+#set($provider=false)
+#foreach($cookie in $request.cookies)
+  #if($cookie.name == "ukgovld-login-provider")
+    #set($provider=$cookie.value)
+  #end
+#end
+
+<div class="modal-page container">
+  <div class="row">
+    <div class="col-md-12 modal-page-panel">
+      <div class="modal-page-head">
+        <h1>Login or register</h1>
+      </div>
+      <div class="modal-page-body">
+        
+        <div class="row space-above">
+        
+          <div class="col-md-5 blob pale-blue">
+            <div class="blob-inner">
+              <div class="row">
+                <div class="col-md-12">
+                  <h2>Login</h2>
+                  <p>It is not necessary to login to simply access the registry</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <form class="form-horizontal" action="$root/system/security/login" method="post">
+                    <input type="hidden" name="return" value="$return" />
+                    <input type="submit" value="Login with google account" class="btn btn-primary" />
+                  </form>
+                </div>
+              </div>
+              <div class="row space-above">
+                <div class="col-md-12">
+                  <form class="form-horizontal" action="$root/system/security/login" method="post">
+                    <p>Or enter an OpenID provider such as Google+ profile page.</p>
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="provider" #if($provider)value="$provider"#elseplaceholder="OpenID URL"#end    />
+                      <input type="hidden" name="return" value="$return" />
+                      <span class="input-group-btn">
+                        <input type="submit" value="login" class="btn btn-primary" type="button" />
+                      </span>
+                    </div><!-- /input-group -->
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <div class="col-md-5 col-md-offset-1 blob pale-orange">
+            <div class="blob-inner">
+              <h2>Register as a new user</h2>
+              <p>A registered login is required before you can be granted administration privileges.</p>
+              <div class="row">
+                <div class="col-md-12">
+                  <form class="form-horizontal" action="$root/system/security/register" method="post">
+                    <input type="hidden" name="provider" value="https://www.google.com/accounts/o8/id" />
+                    <input type="hidden" name="return" value="$return" />
+                    <input type="submit" value="Register using google account" class="btn btn-primary" />
+                  </form>
+                </div>
+              </div>
+              <div class="row space-above">
+                <div class="col-md-12">
+                  <form class="form-horizontal" action="$root/system/security/register" method="post">
+                    <p>Or enter an OpenID provider such as Google+ profile page.</p>
+                    <div class="input-group">
+                      <input class="form-control" type="text" name="provider" placeholder="OpenID URL">
+                      <input type="hidden" name="return" value="$return" />
+                      <span class="input-group-btn">
+                        <input type="submit" value="register" class="btn btn-primary" type="button" />
+                      </span>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        </div>
+        
+        <div class="row space-above">
+          <div class="col-md-12">
+            <p>If you register or login this site will use cookies to record your
+             preferred OpenID provider and to record the ID you are logged in with for this session.</p>
+          </div>
+        </div>
+        
+
+      </div>
+      <div class="modal-page-footer">
+        <div class="row">
+          <div class="col-md-offset-10 col-md-1">
+            <a href="#if($return)$root$return#else$root#end" class="btn">Close</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal-backdrop in"></div>
+
+#parse("footer.vm")
+

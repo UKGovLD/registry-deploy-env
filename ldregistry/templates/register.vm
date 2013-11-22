@@ -20,38 +20,44 @@
     </div>
     <div class="col-md-6">
       ## RHS column with tabbed access to metadata and admin
-      <ul class="nav nav-tabs">
-        <li><a href="#detailsTab" data-toggle="tab">Metadata</a></li>
-        <li><a href="#propertiesTab" data-toggle="tab">All properties <img src="$uiroot/img/molecule-small-green.png"></img> </a></li>
-        <li><a href="#downloadsTab" data-toggle="tab"><span class="glyphicon glyphicon-cloud-download"></span></a></li>
-        <li><a href="#adminTab" data-toggle="tab"><span class="glyphicon glyphicon-wrench"></span></a></li>
-        <li><a href="#collapseTab" data-toggle="tab"><span class="glyphicon glyphicon-collapse-up"></span></a></li>
-      </ul>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <ul class="nav nav-tabs">
+            <li><a href="#detailsTab" data-toggle="tab">Metadata</a></li>
+            <li><a href="#propertiesTab" data-toggle="tab">All properties <img src="$uiroot/img/molecule-small-green.png"></img> </a></li>
+            <li><a href="#downloadsTab" data-toggle="tab"><span class="glyphicon glyphicon-cloud-download"></span></a></li>
+            <li><a href="#adminTab" data-toggle="tab"><span class="glyphicon glyphicon-wrench"></span></a></li>
+            <li class="active"><a href="#collapseTab" data-toggle="tab"><span class="glyphicon glyphicon-collapse-up"></span></a></li>
+          </ul>
 
-      <!-- Tab panes -->
-      <div class="tab-content">
-        <div class="tab-pane" id="detailsTab">
-          <table class="table table-condensed">
-            #metadatarow("is a", $register.listPropertyValues("rdf:type"))
-            #metadatarow("category", $register.listPropertyValues("reg:category"))
-            #metadatarow("owned by", $register.listPropertyValues("reg:owner"))
-            #metadatarow("license", $register.listPropertyValues("dct:license"))
-            #metadatarow("last changed on", $register.listPropertyValues("dct:modified"))
-            #nmetadatarow("submitted by", $itemForReg.listPropertyValues("reg:submitter"))
-            #metadatarow("accepted  on", $itemForReg.listPropertyValues("dct:dateAccepted"))
-          </table>
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="tab-pane" id="detailsTab">
+              <table class="table table-condensed">
+                #metadatarow("is a", $register.listPropertyValues("rdf:type"))
+                #metadatarow("category", $register.listPropertyValues("reg:category"))
+                #metadatarow("owned by", $register.listPropertyValues("reg:owner"))
+                #metadatarow("license", $register.listPropertyValues("dct:license"))
+                #metadatarow("last changed on", $register.listPropertyValues("dct:modified"))
+                #nmetadatarow("submitted by", $itemForReg.listPropertyValues("reg:submitter"))
+                #metadatarow("accepted  on", $itemForReg.listPropertyValues("dct:dateAccepted"))
+              </table>
+            </div>
+            <div class="tab-pane" id="downloadsTab">
+              #parse("downloads.vm")
+            </div>
+            <div class="tab-pane" id="propertiesTab">
+              <h3>All properties of the collection</h3>
+              #restable($register, "table-striped table-condensed")
+            </div>
+            <div class="tab-pane" id="adminTab">
+              #parse("admin-tab.vm")
+            </div>
+            <div class="tab-pane active" id="collapseTab">
+              <span class="small">Select tab to expand</span>
+            </div>
+          </div>
         </div>
-        <div class="tab-pane" id="downloadsTab">
-          #parse("downloads.vm")
-        </div>
-        <div class="tab-pane" id="propertiesTab">
-          <h3>All properties of the collection</h3>
-          #restable($register, "table-striped table-condensed")
-        </div>
-        <div class="tab-pane" id="adminTab">
-          <h3>Administration actions</h3>
-        </div>
-        <div class="tab-pane" id="collapseTab"></div>
       </div>
     </div>
   </div>
@@ -89,17 +95,19 @@
   	  	</thead>
 
   	  	<tbody>
-        #foreach($itemMember in $lib.reg.asItemList($members))
+        #foreach($itemMember in $lib.reg.asItemList($members))        
           #set($item = $itemMember.item)
           #set($member = $itemMember.member)
+          #if( !$item.hasResourceValue("reg:status", "reg:statusReserved") )
           <tr>
           	## When might we not have an $item?
           	<td><a href="#linkhref($item)" title="$item.uRI">$member.name</a></td>
           	<td>$item.getPropertyValue("reg:notation").lexicalForm</td>
-            <td>#tdescription($member,"",60)</td>
+            <td>#tdescription($member,"",70)</td>
             <td>#foreach($ty in $member.listPropertyValues("rdf:type"))#linkfor($ty)#if( $foreach.hasNext ), #end#end</td>
             <td>#showstatus($item.getPropertyValue("reg:status"))</td>
           </tr>
+          #end
         #end
         </tbody>
   	  </table>

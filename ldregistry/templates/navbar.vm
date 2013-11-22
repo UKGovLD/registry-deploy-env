@@ -15,10 +15,17 @@
     <ul class="nav navbar-nav">
       <li #if($nav=="browse")class="active"#end><a href="$root?_browse=true">Browse</a></li>
       <li #if($nav=="about")class="active"#end><a href="$uiroot/about">About</a></li>
+      #if($subject.isAuthenticated())
+        <li #if($nav=="admin")class="active"#end><a href="$uiroot/admin">Admin</a></li>
+      #end
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Advanced <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li #if($nav=="admin")class="active"#end><a href="$uiroot/admin">Admin</a></li>
+          #if($subject.isAuthenticated())
+            <li><a  href="#logout-dialog" role="button" data-toggle="modal">Logout</a></li>
+          #else
+            <li><a href="$uiroot/login?return=/$uri">Login</a></li>
+          #end
           <li><a href="#">Sparql</a></li>
           <li><a href="#">Check URI</a></li>
         </ul>
@@ -30,5 +37,36 @@
       </div>
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
+    #if($subject.isAuthenticated())
+      #set($user=$subject.principal)
+      <ul class="nav pull-right">
+        <li>
+          <span>
+            <span class="nav-text">$user.name</span><span class="glyphicon glyphicon-user"></span>
+            <a class="popinfo" data-trigger="hover" data-placement="left"   data-content="Logout"
+                        href="#logout-dialog" data-target="#logout-dialog" role="button" data-toggle="modal"><span class="glyphicon glyphicon-remove-circle"></span></a>
+          </span>
+        </li>
+      </ul>
+    #end
+
   </div><!-- /.navbar-collapse -->
 </nav>
+
+#if($subject.isAuthenticated())
+    <div id="logout-dialog" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Do you want to logout?</h3>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal" action="$root/system/security/logout" method="post">
+              <input type="submit" value="Logout" class="btn btn-danger" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+#end
