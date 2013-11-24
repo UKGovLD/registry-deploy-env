@@ -35,7 +35,7 @@ $(function() {
         $('#description').removeClass('col-md-5').addClass('col-md-10');
         $('#metadata-pane').addClass('hide');
         $('#close-pillstack').addClass('hide');
-        $('#pillstack li a[href="#collapse-tab"]').tab('show')
+        $('#pillstack li a[href="#collapse-tab"]').tab('show');
     });
 
     // Set up ajax loading tabs
@@ -195,3 +195,11 @@ $(function() {
           });
     });
 });
+
+// Should probably put this in a module
+var showMetadataTab = function(tabname) {
+    $('#description').removeClass('col-md-10').addClass('col-md-5');
+    $('#metadata-pane').removeClass('hide');
+    $('#close-pillstack').removeClass('hide');
+    $('#pillstack li a[href="#' + tabname + '"]').tab('show');
+};

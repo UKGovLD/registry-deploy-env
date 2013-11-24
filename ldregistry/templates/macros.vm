@@ -6,7 +6,7 @@
 #end
 
 ## Determine the suffix of the label- css class to use to colour a status blob
-#macro(statuslabel $statusname)#if($statusname.equals("Stable"))success#elseif($statusname.equals("Experimental"))warning#elseif($statusname.equals("Invalid"))important#elseif($statusname.equals("Superseded"))inverse#elseif($statusname.equals("Retired"))inverse#elseif($statusname.equals("Reserved"))inverse#else #end#end
+#macro(statuslabel $statusname)#if($statusname.equals("Stable"))success#elseif($statusname.equals("Experimental"))warning#elseif($statusname.equals("Invalid"))danger#elseif($statusname.equals("Superseded"))default#elseif($statusname.equals("Retired"))default#elseif($statusname.equals("Reserved"))default#elsedefault#end#end
 
 ## Determine the href value to use in a link to the given resource, reference URIs go external
 #macro(linkhref $res)#if($res.uRI.startsWith($registry.baseURI))$root$res.uRI.substring($registry.baseURI.length())#else$res.uRI#end#end
@@ -148,18 +148,23 @@
 ## Insert a set status dialog which using item as the source of current status
 ## target can be different to allow setting a whole register
 #macro(statusSet $dialogID $dialogCaption $item $target)
-        <div id="$dialogID" class="modal hide" tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3>$dialogCaption</h3>
-          </div>
-          <div id="${dialogID}-status-body" class="modal-body">
-            #foreach($status in $lib.reg.nextStates($item.getPropertyValue("reg:status")))
-                <button class="set-status btn btn-#statuslabel($status.name())" data-status="$status" data-target="#linkhref($target)">$status</button>
-            #end
-          </div>
-          <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <div id="$dialogID" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3>$dialogCaption</h3>
+              </div>
+              <div id="${dialogID}-status-body" class="modal-body">
+                #foreach($status in $lib.reg.nextStates($item.getPropertyValue("reg:status")))
+                    <button class="set-status btn btn-#statuslabel($status.name())" data-status="$status" data-target="#linkhref($target)">$status</button>
+                #end
+              </div>
+              <div class="status-error"></div>
+              <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+              </div>
+            </div>
           </div>
         </div>
 #end

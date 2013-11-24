@@ -25,7 +25,7 @@
   <div id="metadata-pane" class="col-md-5 hide">
     <div class="tab-content" id="metadata-content">
       <div class="tab-pane" id="detailsTab">
-        <h3>Metadata</h3>
+        <h3 class="text-center">Core metadata</h3>
         <table class="table table-condensed">
           #metadatarow("is a", $entity.listPropertyValues("rdf:type"))
           #metadatarow("category", $entity.listPropertyValues("reg:category"))
@@ -36,12 +36,16 @@
           #metadatarow("accepted  on", $item.listPropertyValues("dct:dateAccepted"))
         </table>
       </div>
+      <div class="tab-pane" id="allmetadataTab">     
+        <h3  class="text-center">All registration metadata </h3>     
+        #restable($item, "table-striped table-condensed")
+      </div>
       <div class="tab-pane" id="downloadsTab">
         #parse("downloads.vm")
       </div>
       #if($register)
         <div class="tab-pane" id="propertiesTab">
-          <h3>All properties of the collection</h3>
+          <h3 class="text-center">All properties of the collection</h3>
           #restable($entity, "table-striped table-condensed")
         </div>
       #end
@@ -62,7 +66,8 @@
   </div>
   <div class="col-md-2">
     <ul class="nav nav-pills nav-stacked action-tab" id="pillstack">
-        <li><a href="#detailsTab">Metadata</a></li>
+        <li><a href="#detailsTab">Core metadata</a></li>
+        <li><a href="#allmetadataTab" data-toggle="tab">All metadata</a></li>
         #if($register)
           <li><a href="#propertiesTab">All properties</img> </a></li>
         #end
@@ -97,4 +102,12 @@
         <p>TODO</p>
     </div>
   </div>
+#end
+
+#if($tabStatus)
+<script type="text/javascript">
+  $(function() {
+    showMetadataTab("$tabStatus");
+  });
+</script>
 #end

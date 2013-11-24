@@ -59,8 +59,8 @@
                               <tr id="$newid">
                                 <td>$pv.prop.shortURI</td>
                                 <td><a href="#" class="ui-editable" data-type="text" data-inputclass="input-large" data-name="$pv.prop.shortURI">$v.asTurtle().replaceAll("<","&lt;")</a></td>
-                                <td>#if(!$isItem)<a class="edit-remove-row"><i data-target="#$newid"  class="icon-minus-sign"></i></a>#end
-                                    <a class="edit-add-row"><i data-target="#$newid"  class="icon-plus-sign"></i></a>
+                                <td>#if(!$isItem)<a class="edit-remove-row"><span class="glyphicon glyphicon-minus-sign"></span></a>#end
+                                    <a class="edit-add-row"><span class="glyphicon glyphicon-plus-sign"></span></a>
                                 </td>
                               </tr>
                             #end
@@ -69,7 +69,7 @@
                         </tbody>
                       </table>
                       <div>
-                         <a class="edit-add-newrow"><i data-target="#edit-table" class="icon-plus-sign"></i></a></td>
+                         <a class="edit-add-newrow"><span class="glyphicon glyphicon-plus-sign"></span></a>
                       </div>
                     </div>
 
@@ -93,7 +93,7 @@
 
       <div class="modal-page-footer">
         <button class="btn btn-primary space-above edit-table-save" data-isitem="$isItem" data-return="$return">Save changes</button>
-        <a href="$root$return" class="btn pull-right">Close</a>
+        <a href="$return" class="btn pull-right">Close</a>
       </div>
 
     </div>

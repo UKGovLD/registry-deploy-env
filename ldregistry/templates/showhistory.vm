@@ -13,7 +13,7 @@
                        OPTIONAL {?version version:interval [time:hasBeginning [time:inXSDDateTime ?from]].}
                        OPTIONAL {?version version:interval [time:hasEnd [time:inXSDDateTime ?to]].}} ORDER BY DESC(?version)"))
 
-  <h3>Historical versions available</h3>
+  <h3 class="text-center">Historical versions available</h3>
 
   <table class="table table-striped table-condensed">
     <thead>
