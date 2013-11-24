@@ -1,0 +1,55 @@
+#set($items = $model.querySelectW("SELECT * where {?page a ldp:Page; api:items ?items.}"))
+#if (!$items.isEmpty())
+  #set($members=$items.get(0).items.asList())
+  #set($hasmembers=!$members.isEmpty())
+#else
+  #set($hasmembers=false)
+#end
+
+#if(!$hasmembers)
+  <h2>... currently empty</h2>
+#else
+  <h2>Contents</h2>
+
+  <div class="row">
+  	<div class="col-md-10 col-md-offset-1">
+
+      #set($pageres=$items.get(0).page)
+      #parse("paging.vm")
+
+      #parse("register-list-reserved.vm")
+
+  	  <table class="table table-striped table-bordered">
+  	  	<thead>
+  	      <tr>
+  	      	<th>Name</th>
+  	      	<th>Notation</th>
+  	      	<th>Description</th>
+  	      	<th>Types</th>
+  	      	<th>Status</th>
+  	      </tr>
+  	  	</thead>
+
+  	  	<tbody>
+        #foreach($itemMember in $lib.reg.asItemList($members))        
+          #set($memitem = $itemMember.item)
+          #set($member = $itemMember.member)
+          #if( !$memitem.hasResourceValue("reg:status", "reg:statusReserved") )
+          <tr>
+          	## When might we not have an $memitem?
+          	<td><a href="#linkhref($memitem)" title="$memitem.uRI">$member.name</a></td>
+          	<td>$memitem.getPropertyValue("reg:notation").lexicalForm</td>
+            <td>#tdescription($member,"",70)</td>
+            <td>#foreach($ty in $member.listPropertyValues("rdf:type"))#linkfor($ty)#if( $foreach.hasNext ), #end#end</td>
+            <td>#showstatus($memitem.getPropertyValue("reg:status"))</td>
+          </tr>
+          #end
+        #end
+        </tbody>
+  	  </table>
+
+      #parse("paging.vm")  
+
+  	</div>
+  </div>
+#end

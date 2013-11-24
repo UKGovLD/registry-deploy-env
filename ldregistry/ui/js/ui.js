@@ -21,6 +21,23 @@ $(function() {
 
     processQueryForms();
 
+    // Activate the hidable metadata tab area
+    $('#pillstack li a').click(function (e) {
+        e.preventDefault();
+        $('#description').removeClass('col-md-10').addClass('col-md-5');
+        $('#metadata-pane').removeClass('hide');
+        $('#close-pillstack').removeClass('hide');
+        $(this).tab('show');
+    });
+
+    $('#close-pillstack').click(function (e) {
+        e.preventDefault();
+        $('#description').removeClass('col-md-5').addClass('col-md-10');
+        $('#metadata-pane').addClass('hide');
+        $('#close-pillstack').addClass('hide');
+        $('#pillstack li a[href="#collapse-tab"]').tab('show')
+    });
+
     // Set up ajax loading tabs
     $('.action-tab').bind('show.bs.tab', function(e) {
         var pattern=/#.+/gi

@@ -1,0 +1,100 @@
+## Render a page for a regsistered entity - it may be a register or a leaf entry
+##   $entity   - the thing to render
+##   $item     - the RegisterItem corresponding to $entity
+##   $register - same as $entity if it is a register, otherwise undefined
+
+## Bind $uri to the path for $item so the general action-tab machinery (in footer.vm) works uniformly
+#set($uri = $item.uRI.substring($registry.baseURI.length()))
+#set($uri = $uri.replaceAll("^/", ""))
+
+<div class="row">
+  <div class="col-md-10">
+    #parse("breadcrumbs.vm")
+  </div>
+  <div class="col-md-offset-1 col-md-1">
+    #showstatus($item.getPropertyValue("reg:status"))
+  </div>
+</div>
+
+<div class="row">
+  <div id="description" class="col-md-10">
+    <h2>#if($register) Collection: #else Entry: #end $entity.name #if($versionNumber)- showing version $versionNumber#end</h2>
+    <p>  <strong>URI:</strong> <a href="#linkhref($entity)" title="$entity.uRI">$entity.uRI</a> </p>
+    <p> #description($entity, "<p><em>no description supplied</em></p>") </p>
+  </div>
+  <div id="metadata-pane" class="col-md-5 hide">
+    <div class="tab-content" id="metadata-content">
+      <div class="tab-pane" id="detailsTab">
+        <h3>Metadata</h3>
+        <table class="table table-condensed">
+          #metadatarow("is a", $entity.listPropertyValues("rdf:type"))
+          #metadatarow("category", $entity.listPropertyValues("reg:category"))
+          #metadatarow("owned by", $entity.listPropertyValues("reg:owner"))
+          #metadatarow("license", $entity.listPropertyValues("dct:license"))
+          #metadatarow("last changed on", $entity.listPropertyValues("dct:modified"))
+          #nmetadatarow("submitted by", $item.listPropertyValues("reg:submitter"))
+          #metadatarow("accepted  on", $item.listPropertyValues("dct:dateAccepted"))
+        </table>
+      </div>
+      <div class="tab-pane" id="downloadsTab">
+        #parse("downloads.vm")
+      </div>
+      #if($register)
+        <div class="tab-pane" id="propertiesTab">
+          <h3>All properties of the collection</h3>
+          #restable($entity, "table-striped table-condensed")
+        </div>
+      #end
+      #if(!$register)
+        <div class="tab-pane" id="historyTab" data-action="showhistory" data-uri='$uri' data-uiroot='$uiroot'>
+          Pane is loading ...
+        </div>
+      #end
+      #if($subject.isAuthenticated())
+        <div class="tab-pane" id="adminTab">
+          #parse("admin-tab.vm")
+        </div>
+      #end
+      <div class="tab-pane active" id="collapse-tab">
+        <span class="small">Select tab to expand</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <ul class="nav nav-pills nav-stacked action-tab" id="pillstack">
+        <li><a href="#detailsTab">Metadata</a></li>
+        #if($register)
+          <li><a href="#propertiesTab">All properties</img> </a></li>
+        #end
+        <li><a href="#downloadsTab">Download</a></li>
+        #if(!$register)
+          <li><a href="#historyTab" data-toggle="tab">History</a></li>
+        #end
+        #if($subject.isAuthenticated())
+          <li><a href="#adminTab">Admin</span></a></li>
+        #end
+        <li id="close-pillstack" class="hide"><a href="#collapse-tab" data-toggle="tab"><span class="glyphicon glyphicon-remove-circle"></span></a></li>
+    </ul>
+  </div>
+</div>
+
+#if($register)
+  #parse("register-list.vm")
+#else 
+  <div class="row">
+  	<div class="col-md-6">
+  		<h2>Definition</h2>
+  		#set($template = $lib.reg.templateFor($entity))
+  		#if($template)
+          ## TODO this is not the right place for the template
+          #parse($template)
+  		#else
+  		  #restable($entity, "table-striped table-condensed table-bordered")
+  		#end
+  	</div>
+    <div class="col-md-offset-1 col-md-5">
+        <h2>Links</h2>
+        <p>TODO</p>
+    </div>
+  </div>
+#end

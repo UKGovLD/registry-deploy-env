@@ -47,8 +47,9 @@
       #if($node.hasResourceValue("rdf:type","reg:Register"))
         ## A register
         #set($register=$node)
-        #set($itemForReg=$model.getNode($node.uRI.replaceAll("/([^/]+)$", "/_$1")))
-        #parse("register.vm")
+        #set($entity=$register)
+        #set($item=$model.getNode($node.uRI.replaceAll("/([^/]+)$", "/_$1")))
+        #parse("page-render.vm")
 
       #elseif($node.hasResourceValue("rdf:type","reg:RegisterItem"))
         ## a RegisterItem which might in turn point to a register or a real entity
@@ -57,11 +58,10 @@
         #if($entity.hasResourceValue("rdf:type","reg:Register"))
           ## Render as a register
           #set($register=$entity)
-          #set($itemForReg=$item)
-          #parse("register.vm")
+          #parse("page-render.vm")
 
         #else
-          #parse("item.vm")
+          #parse("page-render.vm")
         #end
 
       #else
@@ -73,7 +73,7 @@
           #if($item.isAnon())
             #parse("resource.vm")
           #else
-            #parse("item.vm")
+            #parse("page-render.vm")
           #end
         #else
           #parse("resource.vm")

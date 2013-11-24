@@ -55,14 +55,14 @@
 ## Display a description for a resource if one is available, otherwise show the default (which can be empty)
 #macro(description $r $default)
   #if($r.getPropertyValue("dct:description"))
-    <p>$r.getLocalizedValue("dct:description")</p>
+    $r.getLocalizedValue("dct:description")
   #else$default#end
 #end
 
 ## Display a truncated description for a resource if one is available, otherwise show the default (which can be empty)
 #macro(tdescription $r $default $limit)
   #if($r.getPropertyValue("dct:description"))
-    <p>$lib.reg.stripHtml($r.getLocalizedValue("dct:description"), $limit)</p>
+    $lib.reg.stripHtml($r.getLocalizedValue("dct:description"), $limit)
   #else$default#end
 #end
 
