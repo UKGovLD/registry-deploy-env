@@ -1,0 +1,63 @@
+#set($pageTitle="Search: $query")
+#parse("header.vm")
+#parse("navbar.vm")
+
+#set($target='<nullsearch>')
+#if($query && !$query.trim().isEmpty()) #set($target="${query}*") #end
+
+#if($page)
+  #set($paging="_page=$page")
+#else
+  #set($paging="firstPage")
+#end
+
+#set($response=$registry.perform("Search","?query=$lib.pathEncode($target)&_view=with_metadata&$paging", $requestor))
+
+#if($response.status == 200)
+  #set($model=$response.entity)
+  #set($qr=$model.querySelectW("SELECT * WHERE {?page a ldp:Page; api:items ?items}")[0])
+  #set($items=$qr.items.asList())
+  #set($pageres=$qr.page)
+
+  <div class="container">
+    <h3>Search results for: $query</h3>
+
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Notation</th>
+          <th>Description</th>
+          <th>Types</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        #foreach($entity in $items)
+          #set($temp=$entity.connectedNodes("^reg:entity/^reg:definition"))
+          #if(!$temp.isEmpty())  #set($item=$temp.get(0)) #else #set($item=$entity) #end
+          <tr>
+            <td>
+              #if($entity.hasResourceValue("rdf:type", "reg:Register"))<span class="glyphicon glyphicon-folder-open"></span> &nbsp; #end
+              <a href="#linkhref($item)" title="$item.uRI">$entity.name</a>
+            </td>
+            <td>$item.getPropertyValue("reg:notation").lexicalForm</td>
+            <td>#tdescription($entity,"",70)</td>
+            <td>
+              #foreach($ty in $entity.listPropertyValues("rdf:type"))#linkfor($ty)#if( $foreach.hasNext ), #end#end
+            </td>
+            <td>#showstatus($item.getPropertyValue("reg:status"))</td>
+          </tr>
+        #end
+      </tbody>
+    </table>
+
+    #parse("paging.vm")
+
+#else
+  #parse("internal-error.vm")
+#end
+
+
+#parse("footer.vm")

@@ -17,7 +17,7 @@
         <div class="modal-page-body">
 
           #if(!$target.startsWith($registry.baseURI))
-            <div class="alert">Sorry, can only update managed entities, this looks like an external reference</div>
+            <div class="alert alert-warning">Sorry, can only update managed entities, this looks like an external reference</div>
           #else
             #set($uri=$lib.reg.pathFor($target))
             #set($response=$registry.perform("Read","$uri?_view=with_metadata", $requestor))
@@ -58,9 +58,9 @@
                               #set($count = $count + 1)
                               <tr id="$newid">
                                 <td>$pv.prop.shortURI</td>
-                                <td><a href="#" class="ui-editable" data-type="text" data-inputclass="input-large" data-name="$pv.prop.shortURI">$v.asTurtle().replaceAll("<","&lt;")</a></td>
-                                <td>#if(!$isItem)<a class="edit-remove-row"><span class="glyphicon glyphicon-minus-sign"></span></a>#end
-                                    <a class="edit-add-row"><span class="glyphicon glyphicon-plus-sign"></span></a>
+                                <td><a href="#" class="ui-editable" data-type="text" data-inputclass="ui-edit-main" data-name="$pv.prop.shortURI">$v.asTurtle().replaceAll("<","&lt;")</a></td>
+                                <td>#if(!$isItem)<button class="edit-remove-row btn btn-sm" data-target="#$newid"><span class="glyphicon glyphicon-minus-sign"></span></button>#end
+                                    <button class="edit-add-row btn btn-sm" data-target="#$newid"><span  class="glyphicon glyphicon-plus-sign"></span></button>
                                 </td>
                               </tr>
                             #end
@@ -69,7 +69,7 @@
                         </tbody>
                       </table>
                       <div>
-                         <a class="edit-add-newrow"><span class="glyphicon glyphicon-plus-sign"></span></a>
+                         <button class="edit-add-newrow btn btn-sm" data-target="#edit-table"><span class="glyphicon glyphicon-plus-sign"></span></button>
                       </div>
                     </div>
 
@@ -87,7 +87,7 @@
 
         </div>
 
-        <div id="msg-alert" class="alert hide">
+        <div id="msg-alert" class="alert">
             <div id="msg"></div>
         </div>
 

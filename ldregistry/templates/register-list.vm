@@ -15,7 +15,7 @@
   	<div class="col-md-10 col-md-offset-1">
 
       #set($pageres=$items.get(0).page)
-      #parse("paging.vm")
+      ## #parse("paging.vm")
 
       #parse("register-list-reserved.vm")
 
@@ -37,10 +37,15 @@
           #if( !$memitem.hasResourceValue("reg:status", "reg:statusReserved") )
           <tr>
           	## When might we not have an $memitem?
-          	<td><a href="#linkhref($memitem)" title="$memitem.uRI">$member.name</a></td>
+          	<td>
+              #if($member.hasResourceValue("rdf:type", "reg:Register"))<span class="glyphicon glyphicon-folder-open"></span> &nbsp; #end
+              <a href="#linkhref($memitem)" title="$memitem.uRI">$member.name</a>
+            </td>
           	<td>$memitem.getPropertyValue("reg:notation").lexicalForm</td>
             <td>#tdescription($member,"",70)</td>
-            <td>#foreach($ty in $member.listPropertyValues("rdf:type"))#linkfor($ty)#if( $foreach.hasNext ), #end#end</td>
+            <td>              
+              #foreach($ty in $member.listPropertyValues("rdf:type"))#linkfor($ty)#if( $foreach.hasNext ), #end#end
+            </td>
             <td>#showstatus($memitem.getPropertyValue("reg:status"))</td>
           </tr>
           #end

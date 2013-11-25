@@ -1,14 +1,75 @@
 #set($nav="category")
 #parse("navbar.vm")
 
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Category list</h1>
+<div class="container">
+
+  <h1>List all collections</h1>
+  #set($base=$root)
+  #if(!$state)
+    #set($state="")
+  #end
+
+  #set($fr=$facetCat.query($state))
+  <div class="row">
+
+    <div class="col-md-3">
+      <h4>Filters</h4>
+      #foreach($facet in $fr.facets)
+      ## #if ($facet.notEmpty())
+      <div>
+        <h4  class="label label-info">$facet.name</h4>
+        #if($facet.isSet())
+          <p>
+            $facet.valueLexicalForm <a href="${base}?state=$lib.pathEncode($fr.serializeWithout($facet.varname))"><span class="glyphicon glyphicon-remove"></span></a>
+          </p>
+        #else
+          <ul>
+            #foreach($fv in $facet.values)
+              <li><a href="$base?state=$lib.pathEncode($fr.serializeWith($facet.varname, $fv.value))">$fv.lexicalForm</a> [$fv.count]</li>
+            #end
+          </ul>
+        #end
       </div>
+      ## #end
+      #end
     </div>
 
-    <div class="container">
-      <div class="row">
-        <p>I am a category list</p>
-      </div>
-    ## container will be closed by footer
+    <div class="col-md-9">
+      #if($page)
+        #set($page = $lib.safeInt($page,0))
+      #else
+        #set($page = 0)
+      #end
+
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Notation</th>
+            <th>Description</th>
+##            <th>Types</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          #foreach($item in $lib.reg.wrap( $fr.getResultsPage($page) ))
+            #set($entity = $item.connectedNodes("reg:definition/reg:entity")[0])
+
+          <tr>
+            <td>
+              #if($entity.hasResourceValue("rdf:type", "reg:Register"))<span class="glyphicon glyphicon-folder-open"></span> &nbsp; #end
+              <a href="#linkhref($item)" title="$item.uRI">$entity.name</a>
+            </td>
+            <td>$item.getPropertyValue("reg:notation").lexicalForm</td>
+            <td>#tdescription($entity,"",70)</td>
+##            <td> #foreach($ty in $entity.listPropertyValues("rdf:type"))#linkfor($ty)#if( $foreach.hasNext ), #end#end </td>
+            <td>#showstatus($item.getPropertyValue("reg:status"))</td>
+          </tr>
+          #end
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+

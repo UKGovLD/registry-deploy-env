@@ -8,33 +8,29 @@
        #set($Integer = 0)
        #set($pagenum = $Integer.parseInt($page))
 
-        <div class="pagination">
-          <ul>
+          <ul class="pagination pagination-sm">
             #if($pagenum > 0)
               #set($prev=$pagenum - 1)
-              <li><a href="?page=$prev$qparam">Prev</a></li>
+              <li><a href="?page=$prev$qparam">&laquo;</a></li>
               #foreach($p in [0..$prev])
                 <li><a href="?page=$p$qparam">$p</a></li>
               #end
             #else
-              <li class="disabled"><a href="#">Prev</a></li>
+              <li class="disabled"><a href="#">&laquo;</a></li>
             #end
 
             <li class="active"><a href="?page=$pagenum$qparam">$pagenum</a></li>
 
             #if($pageres.getPropertyValue("ldp:nextPage"))
               #set($next=$pagenum + 1)
-              <li><a href="?page=$next$qparam">Next page</a></li>
+              <li><a href="?page=$next$qparam">&raquo;</a></li>
             #end
           </ul>
-        </div>
 
       #elseif($pageres.getPropertyValue("ldp:nextPage"))
-        <div class="pagination">
-          <ul>
-            <li class="disabled"><a href="#">Prev</a></li>
+          <ul  class="pagination pagination-sm">
+            <li class="disabled"><a href="#">&laquo;</a></li>
             <li class="active"><a href="#">0</a></li>
-            <li><a href="?page=1$qparam">Next page</a></li>
+            <li><a href="?page=1$qparam">&raquo;</a></li>
           </ul>
-        </div>
       #end

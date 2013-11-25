@@ -44,7 +44,7 @@
                   <form class="form-horizontal" action="$root/system/security/login" method="post">
                     <p>Or enter an OpenID provider such as Google+ profile page.</p>
                     <div class="input-group">
-                      <input type="text" class="form-control" name="provider" #if($provider)value="$provider"#elseplaceholder="OpenID URL"#end    />
+                      <input type="text" class="form-control" name="provider" #if($provider)value="$provider"#{else}placeholder="OpenID URL"#end    />
                       <input type="hidden" name="return" value="$return" />
                       <span class="input-group-btn">
                         <input type="submit" value="login" class="btn btn-primary" type="button" />

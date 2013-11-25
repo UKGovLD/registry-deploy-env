@@ -48,7 +48,8 @@
         ## A register
         #set($register=$node)
         #set($entity=$register)
-        #set($item=$model.getNode($node.uRI.replaceAll("/([^/]+)$", "/_$1")))
+        #set($item=$model.getNode($node.uRI.replaceAll("/([^/]*)$", "/_$1")))
+
         #parse("page-render.vm")
 
       #elseif($node.hasResourceValue("rdf:type","reg:RegisterItem"))

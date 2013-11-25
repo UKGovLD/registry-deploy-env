@@ -7,6 +7,8 @@
 #set($uri = $item.uRI.substring($registry.baseURI.length()))
 #set($uri = $uri.replaceAll("^/", ""))
 
+#set($template = $lib.reg.templateFor($entity))
+
 <div class="row">
   <div class="col-md-10">
     #parse("breadcrumbs.vm")
@@ -18,7 +20,7 @@
 
 <div class="row">
   <div id="description" class="col-md-10">
-    <h2>#if($register) Collection: #else Entry: #end $entity.name #if($versionNumber)- showing version $versionNumber#end</h2>
+    <h2>#if($register)Collection: #{else}Entry: #end $entity.name #if($versionNumber)- showing version $versionNumber#end</h2>
     <p>  <strong>URI:</strong> <a href="#linkhref($entity)" title="$entity.uRI">$entity.uRI</a> </p>
     <p> #description($entity, "<p><em>no description supplied</em></p>") </p>
   </div>
@@ -43,9 +45,9 @@
       <div class="tab-pane" id="downloadsTab">
         #parse("downloads.vm")
       </div>
-      #if($register)
+      #if($register || $template)
         <div class="tab-pane" id="propertiesTab">
-          <h3 class="text-center">All properties of the collection</h3>
+          <h3 class="text-center">All properties of the entity</h3>
           #restable($entity, "table-striped table-condensed")
         </div>
       #end
@@ -68,6 +70,7 @@
     <ul class="nav nav-pills nav-stacked action-tab" id="pillstack">
         <li><a href="#detailsTab">Core metadata</a></li>
         <li><a href="#allmetadataTab" data-toggle="tab">All metadata</a></li>
+        ## #if($register || $template)  ## Suppressed to reduce height of pill stack
         #if($register)
           <li><a href="#propertiesTab">All properties</img> </a></li>
         #end
@@ -89,13 +92,11 @@
   <div class="row">
   	<div class="col-md-6">
   		<h2>Definition</h2>
-  		#set($template = $lib.reg.templateFor($entity))
-  		#if($template)
-          ## TODO this is not the right place for the template
-          #parse($template)
-  		#else
+##  		#if($template)
+##          #parse($template)
+##  		#else
   		  #restable($entity, "table-striped table-condensed table-bordered")
-  		#end
+##  		#end
   	</div>
     <div class="col-md-offset-1 col-md-5">
         <h2>Links</h2>

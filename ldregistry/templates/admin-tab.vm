@@ -1,5 +1,6 @@
 ## Actions for an item
 
+  ## Set statis for the entity itself
   #if($lib.reg.isPermitted("StatusUpdate", $uri))
     #if(!$foundAction)
       <h3 class="text-center">Actions</h3>
@@ -9,8 +10,9 @@
     #end
     <a href="#status-dialog" role="button" class="btn btn-primary btn-sm" data-toggle="modal">Set status</a>
 
-    ## Find a sample member
+    ## Set statis for the contents of a register
     #if ($register)
+      ## Find a sample member
       #set($items = $model.querySelectW("SELECT * where {?page a ldp:Page; api:items ?items.}"))
       #if (!$items.isEmpty())
         #set($members=$items.get(0).items.asList())
@@ -30,6 +32,7 @@
     #end
   #end
 
+  ## Add a new item to a register
   #if($register && $lib.reg.isPermitted("Register", $uri))
     #if(!$foundAction)
      <h3 class="text-center">Actions</h3>
@@ -43,13 +46,16 @@
     </p>
   #end
 
+  ## Editing entity, metadata and annotations
   #if($item && $lib.reg.isPermitted("Update", $uri))
     #if(!$foundAction)
       <h3 class="text-center">Actions</h3>
       #set($foundAction=true)
     #end
     <p>
+    #if(!$register)
     <a href="$uiroot/edit-form?target=$lib.pathEncode($entity.uRI)&return=$root/$uri?tabStatus=adminTab" role="button" class="btn btn-primary btn-sm" >Edit <span class="glyphicon glyphicon-edit"></span></a>
+    #end
 
     <a href="$uiroot/edit-form?target=$lib.pathEncode($item.uRI)&return=$root/$uri?tabStatus=adminTab" role="button" class="btn btn-danger btn-sm" >Edit metadata <span class="glyphicon glyphicon-edit"></span></a>
 
@@ -217,7 +223,7 @@
               },
             error :
               function(xhr, status, error){
-               $(".status-error").html("<div class='alert'> <button type='button' class='close' data-dismiss='alert'>&times;</button>Action failed: " + error + " - " + status + "</div>");
+               $(".status-error").html("<div class='alert alert-warning'> <button type='button' class='close' data-dismiss='alert'>&times;</button>Action failed: " + error + " - " + status + "</div>");
               }
          });
        });
@@ -238,7 +244,7 @@
 
             error:
               function(xhr, status, error){
-                 $(".ajax-error").html("<div class='alert'> <button type='button' class='close' data-dismiss='alert'>&times;</button>Action failed: " + error + " - " + xhr.responseText + "</div>");
+                 $(".ajax-error").html("<div class='alert alert-warning'> <button type='button' class='close' data-dismiss='alert'>&times;</button>Action failed: " + error + " - " + xhr.responseText + "</div>");
               }
           });
     });

@@ -81,7 +81,7 @@ $(function() {
 
             error:
               function(xhr, status, error){
-                 $(".ajax-error").html("<div class='alert'> <button type='button' class='close' data-dismiss='alert'>&times;</button>Action failed: " + error + " - " + xhr.responseText + "</div>");
+                 $(".ajax-error").html("<div class='alert alert-warning'> <button type='button' class='close' data-dismiss='alert'>&times;</button>Action failed: " + error + " - " + xhr.responseText + "</div>");
               }
           });
     });
@@ -89,8 +89,12 @@ $(function() {
     // Set up editable fields
     $.fn.editable.defaults.mode = 'inline';
 
+    var editTarget = function(event) {
+        return $(event.target).closest("button").attr("data-target");
+    }
+
     var editRemoveAction = function(e){
-        var rowid = $(e.target).attr("data-target");
+        var rowid = editTarget(e);
         $(rowid).remove();
     };
 
@@ -101,8 +105,8 @@ $(function() {
     var makeEditRow = function(id, prop, value) {
         var row =
             '<tr id="$id">' + makeEditCell("prop", prop) + makeEditCell(prop, value)
-            + '<td><a class="edit-remove-row"><i data-target="#$id"  class="icon-minus-sign"></i></a>   \n'
-            +     '<a class="edit-add-row"><i data-target="#$id"  class="icon-plus-sign"></i></a></td></tr>';
+            + '<td><button class="edit-remove-row  btn btn-sm" data-target="#$id"><span class="glyphicon glyphicon-minus-sign"></span></button>   \n'
+            +     '<button class="edit-add-row btn btn-sm" data-target="#$id"><span class="glyphicon glyphicon-plus-sign"></span></button></td></tr>';
         row = row.replace(/\$id/g, id);
         return row;
     };
@@ -125,7 +129,7 @@ $(function() {
     var idcount = 1;
 
     var editAddAction = function(e){
-        var row = $($(e.target).attr("data-target"));
+        var row = $( editTarget(e) );
         var newid = row.attr("id") + idcount++;
         var prop = row.find("td:first").text();
         installEditRow(row, newid, prop, '""');
@@ -133,7 +137,7 @@ $(function() {
     }
 
     var editAddNewAction = function(e) {
-        var tableid = $(e.target).attr("data-target");
+        var tableid = editTarget(e);
         var lastrow = $(tableid).find("tbody tr:last");
         var newid =  (tableid.replace(/^#/,'')) + "-newrow-"+ idcount++;
         installEditRow(lastrow, newid, '', '');
@@ -186,11 +190,12 @@ $(function() {
             contentType: "text/turtle",
             success: function(){
                 $("#msg").html("Submitted successfully");
+                $('#msg-alert').removeClass('alert-warning').addClass('alert-success').show();
                 window.location.href = returnURL;
             },
             error: function(xhr, status, error){
                 $("#msg").html("Save failed: " + error + " - " + xhr.responseText);
-                $('#msg-alert').removeClass('alert-success').addClass('alert-error').show();
+                $('#msg-alert').removeClass('alert-success').addClass('alert-warning').show();
             }
           });
     });

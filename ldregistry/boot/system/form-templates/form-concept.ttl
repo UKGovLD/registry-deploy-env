@@ -29,9 +29,9 @@
             ui:tooltip "Optional skos:notation"@en;
             ui:property skos:notation;
             ui:fieldType ui:labelField]
-      [a ui:FormField; rdfs:label "value"; skos:notation "value";
-            ui:tooltip "Optional associated value"@en;
-            ui:property rdf:value;
+      [a ui:FormField; rdfs:label "description"; skos:notation "description";
+            ui:tooltip "Description of the concept"@en;
+            ui:property dct:description;
             ui:fieldType ui:labelField]
     );
     .
