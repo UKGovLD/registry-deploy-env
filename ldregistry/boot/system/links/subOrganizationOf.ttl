@@ -10,8 +10,8 @@
 @prefix ui:   <http://purl.org/linked-data/registry-ui#> .
 @prefix org:  <http://www.w3.org/ns/org#> .
 
-<hasUnit> a ui:PathTemplate;
-    rdfs:label "Has organizational unit"@en;
-    dct:description "UI template for finding org:hasUnit links"@en;
-    ui:path "org:hasUnit";
+<subOrganizationOf> a ui:PathTemplate;
+    rdfs:label "Sub-organization of"@en;
+    dct:description "UI template for finding org:subOrganizationOf links"@en;
+    ui:path "org:subOrganizationOf";
     .

@@ -8,9 +8,10 @@
 @prefix ldp:  <http://www.w3.org/ns/ldp#> .
 @prefix reg:  <http://purl.org/linked-data/registry#> .
 @prefix ui:   <http://purl.org/linked-data/registry-ui#> .
+@prefix org:  <http://www.w3.org/ns/org#> .
 
-<topConceptOf> a ui:PathTemplate;
-    rdfs:label "Top concept of"@en;
-    dct:description "UI template for finding skos:topConceptOf links"@en;
-    ui:path "skos:topConceptOf";
+<unitOf> a ui:PathTemplate;
+    rdfs:label "Unit of"@en;
+    dct:description "UI template for finding org:unitOf links"@en;
+    ui:path "org:unitOf";
     .

@@ -26,7 +26,7 @@
           #else
             <li><a href="$uiroot/login?return=/$uri">Login</a></li>
           #end
-          <li><a href="#">Sparql</a></li>
+          <li><a href="$uiroot/sparql-form">Sparql</a></li>
           <li><a href="#">Check URI</a></li>
         </ul>
       </li>

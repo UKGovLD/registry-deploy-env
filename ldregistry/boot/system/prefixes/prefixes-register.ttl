@@ -18,6 +18,7 @@
 @prefix reg:  <http://purl.org/linked-data/registry#> .
 @prefix ui:   <http://purl.org/linked-data/registry-ui#> .
 @prefix qb:      <http://purl.org/linked-data/cube#> .
+@prefix org:  <http://www.w3.org/ns/org#> .
 
 <_dc> a reg:RegisterItem;
     rdfs:label "dc"@en;
@@ -341,6 +342,14 @@ qb: a owl:Ontology;
     vann:preferredNamespaceUri "http://purl.org/linked-data/cube#" ;
     .
 
+<_org> a reg:RegisterItem;
+    reg:status reg:statusStable;
+    reg:definition [ reg:entity org: ];
+    .
 
-
-
+org: a owl:Ontology;
+    rdfs:label "org"@en;
+    dct:description "ORG prefix registration"@en;
+    vann:preferredNamespacePrefix "org";
+    vann:preferredNamespaceUri "http://www.w3.org/ns/org#" ;
+    .

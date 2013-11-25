@@ -9,8 +9,8 @@
 @prefix reg:  <http://purl.org/linked-data/registry#> .
 @prefix ui:   <http://purl.org/linked-data/registry-ui#> .
 
-<topConceptOf> a ui:PathTemplate;
-    rdfs:label "Top concept of"@en;
-    dct:description "UI template for finding skos:topConceptOf links"@en;
-    ui:path "skos:topConceptOf";
+<inScheme> a ui:PathTemplate;
+    rdfs:label "In concept scheme"@en;
+    dct:description "UI template for finding skos:inScheme links"@en;
+    ui:path "skos:inScheme";
     .
