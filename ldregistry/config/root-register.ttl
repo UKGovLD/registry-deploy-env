@@ -20,9 +20,8 @@
 <> a reg:Register;
     version:currentVersion <>;
     rdfs:label "root"@en;
-    dct:description "The root register"@en;
-    reg:owner      <http://example.com/UKLocation> ;
-    reg:manager   <http://www.epimorphics.com/#id> ;
+    dct:description "Register representing the root of the registry tree."@en;
+    reg:owner      <http://reference.data.gov.uk/id/department/defra> ;
     reg:containedItemClass reg:Register, skos:Collection, skos:ConceptScheme;
     owl:versionInfo 1;
 .
@@ -30,7 +29,7 @@
 <_> a reg:RegisterItem;
     version:currentVersion <_>;
     rdfs:label "root"@en;
-    dct:description "The root register"@en;
+    dct:description "Register representing the root of the registry tree."@en;
     reg:status reg:statusStable;
     reg:itemClass reg:Register;
     reg:notation "";

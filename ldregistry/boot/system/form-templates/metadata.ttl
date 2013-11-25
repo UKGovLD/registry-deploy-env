@@ -12,8 +12,6 @@
 
 <form-templates> a reg:Register ;
     rdfs:label "form templates"@en;
-    dct:description "Set of form templates which are used to define manual registration forms"@en;
-    reg:owner      <http://example.com/department> ;
-    reg:manager   <http://example.com/registryManagementLtd> ;
+    dct:description "System register containing a collection of form templates which are used to define manual registration forms"@en;
     reg:category  cat:system;
     .

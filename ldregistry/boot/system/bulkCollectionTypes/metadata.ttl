@@ -10,7 +10,6 @@
 
 <bulkCollectionTypes> a reg:Register;
     rdfs:label "bulk collection types"@en;
-    dct:description "Register of bulk collection types"@en;
-    reg:owner      <http://example.com/UKLocation> ;
+    dct:description "System register describing the data types which can be uploaded as bulk collections"@en;
     reg:category  cat:system;
     .

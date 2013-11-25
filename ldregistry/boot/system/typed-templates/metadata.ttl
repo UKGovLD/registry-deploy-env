@@ -12,6 +12,6 @@
 
 <typed-templates> a reg:Register ;
     rdfs:label "typed templates"@en;
-    dct:description "Defines templates which can be used to provide custom rendering of resources of a specific type"@en;
+    dct:description "System register containing collection of templates which can be used to provide custom rendering of resources of a specific type"@en;
     reg:category  cat:system;
     .
