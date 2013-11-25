@@ -1,0 +1,39 @@
+## partial to render links from an entity
+##     $entity the entity being rendered
+
+## List the link templates we know about
+## TODO lift into a macro
+
+<h2>Links</h2>
+
+#set($response=$registry.perform("Read","system/links?_view=with_metadata&status=any", $requestor))
+#if($response.status == 404 || $response.status >= 500)
+  <div class="alert alert-danger">Problem accessing system/links register</div>
+#else
+
+  #set($started=false)
+  #set($model=$response.entity)
+  #set($target="$registry.baseURI/system/links")
+  #set($node=$model.getNode($target))
+  #foreach($linkTemplate in $node.connectedNodes("rdfs:member"))
+
+    #set($path = $linkTemplate.getPropertyValue("ui:path").lexicalForm)
+    #set($links = $entity.connectedNodes($path))
+
+    #if(!$links.isEmpty())
+      #set($started=true)
+      <h4>$linkTemplate.name</h4>
+      <ul>
+        #foreach($link in $links)
+          <li>#linkfor($link)</li>
+        #end
+      </ul>
+    #end
+
+  #end
+
+  #if(!$started)
+     <p>.. none found</p>
+  #end
+
+#end

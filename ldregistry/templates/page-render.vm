@@ -92,15 +92,14 @@
   <div class="row">
   	<div class="col-md-6">
   		<h2>Definition</h2>
-##  		#if($template)
-##          #parse($template)
-##  		#else
+  		#if($template)
+          #parse($template)
+  		#else
   		  #restable($entity, "table-striped table-condensed table-bordered")
-##  		#end
+  		#end
   	</div>
     <div class="col-md-offset-1 col-md-5">
-        <h2>Links</h2>
-        <p>TODO</p>
+      #parse("links-render.vm")
     </div>
   </div>
 #end

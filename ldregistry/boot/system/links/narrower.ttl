@@ -9,10 +9,8 @@
 @prefix reg:  <http://purl.org/linked-data/registry#> .
 @prefix ui:   <http://purl.org/linked-data/registry-ui#> .
 
-
-<concept> a ui:Template;
-    rdfs:label "concept template";
-    ui:template "concept-render.vm";
-    ui:templatePriority 50;
-    ui:type skos:Concept;
+<narrower> a ui:PathTemplate;
+    rdfs:label "Has narrower concept"@en;
+    dct:description "UI template for finding skos:narrower links"@en;
+    ui:path "skos:narrower";
     .
