@@ -74,9 +74,7 @@
                     </div>
 
                     <div class="tab-pane" id="tabPrefixes">
-                      <a href="#" id="edit-prefixes" data-type="textarea" class="ui-editable" data-inputclass="input-xxlarge" data-rows="12">
-                      $lib.reg.turtlePrefixes($editTarget).replaceAll("<","&lt;").replaceAll("\n","<br/>")
-                      </a>
+                      <a href="#" id="edit-prefixes" data-type="textarea" class="ui-editable" data-inputclass="ui-edit-main" data-rows="12">$lib.reg.turtlePrefixes($editTarget).replaceAll("<","&lt;").replaceAll("\n","<br/>")</a>
                     </div>
 
                   </div>

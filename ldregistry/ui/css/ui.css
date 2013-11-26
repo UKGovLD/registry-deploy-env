@@ -168,3 +168,18 @@ td.align-right {
 .ui-edit-main {
     min-width: 350px;
 }
+
+/* Hierarchical list support */
+.hlist-entry {
+    min-width: 600px;
+    border: 1px solid lightgrey;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.hlist-child-box {
+    padding-left: 40px;
+}

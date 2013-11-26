@@ -1,15 +1,3 @@
-#set($items = $model.querySelectW("SELECT * where {?page a ldp:Page; api:items ?items.}"))
-#if (!$items.isEmpty())
-  #set($members=$items.get(0).items.asList())
-  #set($hasmembers=!$members.isEmpty())
-#else
-  #set($hasmembers=false)
-#end
-
-#if(!$hasmembers)
-  <h2>... currently empty</h2>
-#else
-  <h2>Contents</h2>
 
   <div class="row">
   	<div class="col-md-10 col-md-offset-1">
@@ -57,4 +45,3 @@
 
   	</div>
   </div>
-#end

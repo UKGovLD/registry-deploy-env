@@ -87,8 +87,33 @@
 </div>
 
 #if($register)
-  #parse("register-list.vm")
+  #set($items = $model.querySelectW("SELECT * where {?page a ldp:Page; api:items ?items.}"))
+  #if (!$items.isEmpty())
+    #set($members=$items.get(0).items.asList())
+    #set($hasmembers=!$members.isEmpty())
+  #else
+    #set($hasmembers=false)
+  #end
+
+  #if(!$hasmembers)
+    <h2>... currently empty</h2>
+  #else
+    #if ($item.getPropertyValue("ui:hierarchyRootType") || $item.getPropertyValue("ui:hierarchyRootProperty"))
+      #if($treeView)
+        <h2>Contents tree view <a href="$request.requestURL" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-list"></span></a></h2>
+        #parse("register-tree.vm")
+      #else
+        <h2>Contents list view <a href="$request.requestURL?treeView=true" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-tree-conifer"></span></a></h2>
+        #parse("register-list.vm")
+      #end
+    #else
+      <h2>Contents</h2>
+      #parse("register-list.vm")
+    #end
+  #end
+
 #else 
+
   <div class="row">
   	<div class="col-md-6">
   		<h2>Definition</h2>
