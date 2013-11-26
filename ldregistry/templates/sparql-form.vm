@@ -29,31 +29,34 @@
       // configuration
       var config = {
         endpoints: {
-          "default": "http://environment.data.gov.uk/sparql/bwq/query",
+          "default": "$root/system/query",
         },
         prefixes: {
-          "bw":       "http://environment.data.gov.uk/def/bathing-water/",
-          "bwq":      "http://environment.data.gov.uk/def/bathing-water-quality/",
-          "ef-sp":    "http://location.data.gov.uk/def/ef/SamplingPoint/",
-          "interval": "http://reference.data.gov.uk/def/intervals/",
-          "stats":    "http://statistics.data.gov.uk/def/administrative-geography/",
-          "sr":       "http://data.ordnancesurvey.co.uk/ontology/spatialrelations/",
           "rdf":      "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
           "rdfs":     "http://www.w3.org/2000/01/rdf-schema#",
           "owl":      "http://www.w3.org/2002/07/owl#",
-          "xsd":      "http://www.w3.org/2001/XMLSchema#"
+          "xsd":      "http://www.w3.org/2001/XMLSchema#",
+
+          "dct":  "http://purl.org/dc/terms/",
+          "foaf": "http://xmlns.com/foaf/0.1/",
+          "skos": "http://www.w3.org/2004/02/skos/core#",
+          "version":  "http://purl.org/linked-data/version#",
+          "ldp":  "http://www.w3.org/ns/ldp#",
+          "time": "http://www.w3.org/2006/time#",
+          "reg":  "http://purl.org/linked-data/registry#",
+          "ui":   "http://purl.org/linked-data/registry-ui#",
+          "qb":   "http://purl.org/linked-data/cube#",
+          "org":  "http://www.w3.org/ns/org#"
         },
         queries: [
-          { "name": "Properties of a named bathing water",
-            "query": "select ?predicate ?object\nwhere {\n" +
-                     "  ?bw rdfs:label \"Spittal\"@en ;\n" +
-                     "      ?predicate ?object\n}"
+          { "name": "List all registers",
+            "query": "select *\nwhere {\n" +
+                     "  [] a reg:Register; version:currentVersion ?register.\n}"
           },
-          { "name": "all OWL classes",
-            "query": "select ?class ?label ?description\nwhere {\n" +
-                     "  ?class a owl:Class.\n" +
-                     "  optional { ?class rdfs:label ?label}\n" +
-                     "  optional { ?class rdfs:comment ?description}\n}"
+          { "name": "List items in a register",
+            "query": "select *\nwhere {\n" +
+                     "  ?item reg:register <${registry.baseURI}/system/prefixes>;\n" + 
+                     "        version:currentVersion ?itemVer.\n}"
           }
         ]
         };
