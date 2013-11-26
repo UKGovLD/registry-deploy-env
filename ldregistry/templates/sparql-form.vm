@@ -52,13 +52,12 @@
           { "name": "List all registers",
             "query": "select *\nwhere {\n" +
                      "  ?register a reg:Register; version:currentVersion ?regVer.\n}"
+          } ,
+          { "name": "List items in a register",
+            "query": "select *\nwhere {\n" +
+                     "  ?item reg:register <${registry.baseURI}/system/prefixes>;\n" + 
+                     "        version:currentVersion ?itemVer.\n}"
           }
-##          ,
-##          { "name": "List items in a register",
-##            "query": "select *\nwhere {\n" +
-##                     "  ?item reg:register <${registry.baseURI}/system/prefixes>;\n" + 
-##                     "        version:currentVersion ?itemVer.\n}"
-##          }
         ]
         };
 
