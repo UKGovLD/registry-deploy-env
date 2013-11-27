@@ -99,8 +99,8 @@
     <h2>... currently empty</h2>
   #else
     #if ($item.getPropertyValue("ui:hierarchyRootType") || $item.getPropertyValue("ui:hierarchyRootProperty") || $register.hasResourceValue("rdf:type", "skos:ConceptScheme"))
-      #if($treeView)
-        <h2>Contents tree view <a href="$request.requestURL" class="btn btn-default btn-sm" role="button" data-trigger="hover" data-placement="top" data-content="View contents as a flat list"><span class="glyphicon glyphicon-list"></span></a></h2>
+      #if(!$listView)
+        <h2>Contents tree view <a href="$request.requestURL?listView=true" class="btn btn-default btn-sm" role="button" data-trigger="hover" data-placement="top" data-content="View contents as a flat list"><span class="glyphicon glyphicon-list"></span></a></h2>
         #parse("register-tree.vm")
       #else
         <h2>Contents list view <a href="$request.requestURL?treeView=true" class="btn btn-default btn-sm" role="button" data-trigger="hover" data-placement="top" data-content="View contents as a hierarchy"><span class="glyphicon glyphicon-tree-conifer"></span></a></h2>
