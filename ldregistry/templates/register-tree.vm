@@ -4,7 +4,7 @@
 
 #if($register.hasResourceValue("rdf:type", "skos:ConceptScheme"))
   #set($rootProp = "skos:topConceptOf")
-  #set($narrow="skos:narrower")
+  #set($narrow="skos:narrower|^skos:broader")
 #else
   #set($rootType = $item.getPropertyValue("ui:hierarchyRootType"))
   #set($rootProp = $item.getPropertyValue("ui:hierarchyRootProperty"))
