@@ -1,0 +1,18 @@
+## Render a list of concepts in a hierarchical view
+##   $query - the SPARQL query to find the list members
+##   $narrow - the path expression used to find further children of these results
+#set($matches=$lib.reg.describeAsItems($query))
+#foreach($itemMember in $matches)        
+  #set($memitem = $itemMember.item)
+  #set($member = $itemMember.member)
+  #if( !$memitem.hasResourceValue("reg:status", "reg:statusReserved") )
+    <div class="hlist-entry">
+        #if(!$member.connectedNodes($narrow).isEmpty())
+        <a href="#" data-state="new" data-target="$uiroot/hlist?concept=$lib.pathEncode($member.uRI)&narrow=$lib.pathEncode($narrow)" class="hlist-button"><span class="glyphicon glyphicon-plus-sign"></span></a>
+        #end
+        <a href="#linkhref($memitem)" title="$memitem.uRI">$member.name</a>
+        #tdescription($member,"",70)
+        <span class="pull-right">#showstatus($memitem.getPropertyValue("reg:status"))</span>
+    </div>
+  #end
+#end

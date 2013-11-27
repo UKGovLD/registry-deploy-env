@@ -1,0 +1,4 @@
+## Retun rendered list of children of some $concept, $narrow gives the path expression for testing narrowing
+#set($uiroot="$root/ui")
+#set($query="SELECT DISTINCT ?item WHERE {<$concept> $narrow ?entity. ?entity ^reg:entity/^reg:definition/^version:currentVersion ?item}")
+#parse("hlist-render.vm")

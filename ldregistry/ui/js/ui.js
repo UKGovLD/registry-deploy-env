@@ -86,6 +86,41 @@ $(function() {
           });
     });
 
+    // Hierarchicall views
+    var hlistHandler = function(event) {
+        var button = $(event.target).closest("a");
+        var parent = button.closest("div");
+        var state = button.attr("data-state");
+        if (state === "new") {
+            $.get(button.attr("data-target"), function(data){
+                parent.after("<div class='hlist-child-box'>" + data + "</div>");    
+                parent.next("div").find("a.hlist-button").click(hlistHandler);
+            });
+            setHlistState(button, "open");
+        } else if (state === "open") {
+            parent.next("div.hlist-child-box").hide();
+            setHlistState(button, "closed");
+        } else if (state === "closed") {
+            parent.next("div.hlist-child-box").show();
+            setHlistState(button, "open");
+        }
+    };
+
+    var setHlistState = function(button, state) {
+        button.attr("data-state", state);
+        if (state === "open") {
+            button.find("span").removeClass("glyphicon-plus-sign").addClass("glyphicon-minus-sign");            
+        } else if (state === "closed") {
+            button.find("span").removeClass("glyphicon-minus-sign").addClass("glyphicon-plus-sign");
+        }
+    };
+    
+    $("a.hlist-button").click( hlistHandler );
+
+    // ------------
+    // Edit support
+    // ------------
+
     // Set up editable fields
     $.fn.editable.defaults.mode = 'inline';
 

@@ -1,9 +1,15 @@
-## Render a tree view of a regster
+## Render a tree view of a register
 ##   $register will be bound to the register
 ##   $item     will be bound to the corresponding RegisterItem
 
-#set($rootType = $item.getPropertyValue("ui:hierarchyRootType"))
-#set($rootProp = $item.getPropertyValue("ui:hierarchyRootProperty"))
+#if($register.hasResourceValue("rdf:type", "skos:ConceptScheme"))
+  #set($rootProp = "skos:topConceptOf")
+  #set($narrow="skos:narrower")
+#else
+  #set($rootType = $item.getPropertyValue("ui:hierarchyRootType"))
+  #set($rootProp = $item.getPropertyValue("ui:hierarchyRootProperty"))
+  #set($narrow=$item.getPropertyValue("ui:hierarchyChildProperty").lexicalForm)
+#end
 
 #if($rootType) 
   #set($queryPart="?entity a $rootType. ")
@@ -16,21 +22,4 @@
 
 #set($query="SELECT DISTINCT ?item WHERE {<$register.uRI> ^reg:register ?item . ?item version:currentVersion/reg:definition/reg:entity ?entity . $queryPart}")
 
-#set($matches=$lib.reg.describeAsItems($query))
-
-#foreach($itemMember in $matches)        
-  #set($memitem = $itemMember.item)
-  #set($member = $itemMember.member)
-  #if( !$memitem.hasResourceValue("reg:status", "reg:statusReserved") )
-
-    #set($id="entry-$foreach.count")
-    <div class="hlist-entry" id="$id">
-        <a href="#" data-target="#$id"><span class="glyphicon glyphicon-plus-sign"></span></a>
-        <a href="#linkhref($memitem)" title="$memitem.uRI">$member.name</a>
-        #tdescription($member,"",70)
-        <span class="pull-right">#showstatus($memitem.getPropertyValue("reg:status"))</span>
-    </div>
-
-  #end
-#end
-      
+#parse("hlist-render.vm")
