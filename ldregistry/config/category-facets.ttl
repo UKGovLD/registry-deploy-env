@@ -7,23 +7,35 @@
 
 @prefix reg:  <http://purl.org/linked-data/registry#> .
 @prefix facet:   <http://www.epimorphics.com/ontologies/facet#> .
-@prefix ui:      <http://example.com/ui> .
+@prefix er-ui:      <http://environment.data.gov.uk/registry/structure/ui/> .
 
-ui:baseCatFacets
-    facet:facets (ui:catFacet ui:ownerFacet );
+er-ui:baseCatFacets
+    facet:facets (er-ui:catFacet er-ui:ownerFacet er-ui:entityFacet );
     facet:query """?item a <http://purl.org/linked-data/registry#RegisterItem>;
                           <http://purl.org/linked-data/registry#itemClass> <http://purl.org/linked-data/registry#Register> .
                           """;
     .
 
-ui:catFacet a facet:Facet;
+er-ui:catFacet a facet:Facet;
     rdfs:label "Category";
     skos:notation "category";
     facet:query "<http://purl.org/linked-data/version#currentVersion>/<http://purl.org/linked-data/registry#definition>/<http://purl.org/linked-data/registry#entity>/<http://purl.org/linked-data/version#currentVersion>/<http://purl.org/linked-data/registry#category>" ;
     .
 
-ui:ownerFacet  a facet:Facet;
+er-ui:entityFacet a facet:Facet;
+    rdfs:label "Entity";
+    skos:notation "entity";
+    facet:query "<http://purl.org/linked-data/version#currentVersion>/<http://purl.org/linked-data/registry#definition>/<http://purl.org/linked-data/registry#entity>/<http://purl.org/linked-data/version#currentVersion>/<http://environment.data.gov.uk/registry/structure/ui/entityType>" ;
+    .
+
+er-ui:ownerFacet  a facet:Facet;
     rdfs:label "Owner";
     skos:notation "owner";
     facet:query "<http://purl.org/linked-data/version#currentVersion>/<http://purl.org/linked-data/registry#definition>/<http://purl.org/linked-data/registry#entity>/<http://purl.org/linked-data/version#currentVersion>/<http://purl.org/linked-data/registry#owner>" ;
     .
+
+er-ui:entityType a owl:ObjectProperty;
+    rdfs:label "category - Entity Type"@en;
+    rdfs:description "Property use to categorize the type of entity a code list describes"@en;
+    .
+

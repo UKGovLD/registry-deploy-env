@@ -1,0 +1,13 @@
+<RPA>   a       <http://www.w3.org/ns/org#Organization> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Rural Payments Agency" ;
+        <http://www.w3.org/2002/07/owl#sameAs>
+                <http://reference.data.gov.uk/id/public-body/rural-payments-agency> ;
+        <http://www.w3.org/2004/02/skos/core#notation>
+                "RPA" ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel>
+                "Rural Payments Agency" ;
+        <http://www.w3.org/ns/org#subOrganizationOf>
+                <DEFRA> ;
+        <http://xmlns.com/foaf/0.1/homepage>
+                <https://www.gov.uk/government/organisations/rural-payments-agency> .

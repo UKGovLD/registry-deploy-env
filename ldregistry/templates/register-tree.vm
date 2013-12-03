@@ -5,10 +5,20 @@
 #if($register.hasResourceValue("rdf:type", "skos:ConceptScheme"))
   #set($rootProp = "skos:topConceptOf")
   #set($narrow="skos:narrower|^skos:broader")
-#else
-  #set($rootType = $item.getPropertyValue("ui:hierarchyRootType"))
-  #set($rootProp = $item.getPropertyValue("ui:hierarchyRootProperty"))
-  #set($narrow=$item.getPropertyValue("ui:hierarchyChildProperty").lexicalForm)
+#end
+#if($register.getPropertyValue("ui:hierarchyRootType"))
+  #set($rootType = $register.getPropertyValue("ui:hierarchyRootType"))
+#end
+#if($register.getPropertyValue("ui:hierarchyRootProperty"))
+  #set($rootProp = $register.getPropertyValue("ui:hierarchyRootProperty"))
+#end
+#if($register.getPropertyValue("ui:hierarchyChildProperty"))
+  #set($x=$register.getPropertyValue("ui:hierarchyChildProperty"))
+  #if($x.isLiteral())
+    #set($narrow=$x.lexicalForm)
+  #else
+    #set($narrow="<$x.uRI>")
+  #end
 #end
 
 #if($rootType) 

@@ -1,0 +1,13 @@
+<FERA>  a       <http://www.w3.org/ns/org#Organization> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Food & Environment Research Agency" ;
+        <http://www.w3.org/2002/07/owl#sameAs>
+                <http://reference.data.gov.uk/id/public-body/food--environment-research-agency> ;
+        <http://www.w3.org/2004/02/skos/core#notation>
+                "FERA" ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel>
+                "Food & Environment Research Agency" ;
+        <http://www.w3.org/ns/org#subOrganizationOf>
+                <DEFRA> ;
+        <http://xmlns.com/foaf/0.1/homepage>
+                <https://www.gov.uk/government/organisations/the-food-and-environment-research-agency> .

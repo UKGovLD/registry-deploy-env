@@ -1,0 +1,15 @@
+<DEFRA>  a      <http://www.w3.org/ns/org#Organization> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Department for Environment, Food & Rural Affairs" ;
+        <http://www.w3.org/2002/07/owl#sameAs>
+                <http://reference.data.gov.uk/id/department/defra> ;
+        <http://www.w3.org/2004/02/skos/core#notation>
+                "DEFRA" ;
+        <http://www.w3.org/2004/02/skos/core#topConceptOf>
+             <http://environment.data.gov.uk/registry/structure/org> ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel>
+                "Department for Environment, Food & Rural Affairs" ;
+        <http://www.w3.org/ns/org#hasSubOrganization>
+                <CCW> , <AHVLA> , <EA> , <RPA> , <FERA> , <CEFAS> , <NE> , <VMD> , <MMO> , <JNCC> ;
+        <http://xmlns.com/foaf/0.1/homepage>
+                <https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs> .
