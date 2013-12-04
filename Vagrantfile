@@ -1,8 +1,8 @@
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
-#INSTANCE_TYPE = "t1.large"
-INSTANCE_TYPE = "t1.micro"
+INSTANCE_TYPE = "m1.large"
+#INSTANCE_TYPE = "t1.micro"
 AWS_REGION = ENV["AWS_DEFAULT_REGION"] || "eu-west-1"
 AWS_ZONE = "eu-west-1b"
 

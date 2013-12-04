@@ -18,7 +18,7 @@ update-alternatives --set java /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
 unlink /usr/lib/jvm/default-java
 ln -s /usr/lib/jvm/java-1.7.0-openjdk-amd64 /usr/lib/jvm/default-java
 
-if [ $(java -version 2>&1 | grep 1.7. -c) -ne 1 ]
+if [[ $(java -version 2>&1 | grep 1.7. -c) -ne 1 ]]
 then
   echo "**   ERROR: java version doesn't look right, try manual alternatives setting restart tomcat7"
   echo "**   java version is:"
@@ -37,9 +37,19 @@ fi
 
 if blkid | grep /dev/xvdf; then
   # We have an attached volume, mount it
-  if ! mount | grep /dev/xvdf ; then
+  if ! mount | grep -q /dev/xvdf ; then
+    # Not mounted yet but chec if e.g. instore store is mounted in its place
+    if mount | grep -q /mnt ; then
+      # Yes, in that case remove that mount
+      umount /mnt
+      mkdir /instance
+      sed -i -e 's!/mnt!/instance!g' /etc/fstab
+      mount /instance
+    fi
+
     echo "/dev/xvdf /mnt ext4 rw 0 0" | tee -a /etc/fstab > /dev/null && mount /mnt  
   fi
+
   # If it's snapshot the ldregistry areas will exist, otherwise create them
   if [ ! -d /mnt/opt/ldregistry ]; then
     mkdir /mnt/opt
@@ -99,7 +109,8 @@ chkconfig nginx on
 # Set up configuration area /opt/ldregistry
 echo "** Installing registry application"
 rm -rf /var/lib/tomcat7/webapps/ROOT*
-curl -4s https://s3-eu-west-1.amazonaws.com/ukgovld/$RELEASE > /var/lib/tomcat7/webapps/ROOT.war
+rm -rf /var/lib/tomcat7/webapps/registry*
+curl -4s https://s3-eu-west-1.amazonaws.com/ukgovld/$RELEASE > /var/lib/tomcat7/webapps/registry.war
 
 if [ $(grep -c -e 'tomcat.*/opt/ldregistry/proxy-conf.sh' /etc/sudoers) -ne 0 ]
 then
