@@ -23,4 +23,5 @@
     dct:description "Codes and concepts used to guide the presentation of the registry user interface."@en;
     reg:owner     er-org:DEFRA ;
     reg:category  er-cat:System;
+    er-ui:entityType  er-entity:Abstract;
     .

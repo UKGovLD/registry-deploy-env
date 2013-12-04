@@ -26,8 +26,7 @@
     dct:description "Codes used to identify organizations relevant to registry publications."@en;
     reg:owner     er-org:DEFRA ;
     reg:category  er-cat:System;
-    er-ui:entity  er-entity:Organizations_and_sectors;
+    er-ui:entityType  er-entity:Organizations_and_sectors;
     ui:hierarchyRootProperty skos:topConceptOf;
     ui:hierarchyChildProperty "org:hasSubOrganization";
-
     .

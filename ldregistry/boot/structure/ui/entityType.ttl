@@ -1,0 +1,16 @@
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+
+@prefix reg:  <http://purl.org/linked-data/registry#> .
+@prefix facet:   <http://www.epimorphics.com/ontologies/facet#> .
+@prefix er-ui:      <http://environment.data.gov.uk/registry/structure/ui/> .
+
+er-ui:entityType a owl:ObjectProperty;
+    rdfs:label "category - Entity Type"@en;
+    rdfs:description "Property use to categorize the type of entity a code list describes"@en;
+    .
+

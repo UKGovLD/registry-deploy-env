@@ -21,7 +21,6 @@
     version:currentVersion <>;
     rdfs:label "root"@en;
     dct:description "Register representing the root of the registry tree."@en;
-    reg:owner      <http://reference.data.gov.uk/id/department/defra> ;
     reg:containedItemClass reg:Register, skos:Collection, skos:ConceptScheme;
     owl:versionInfo 1;
 .

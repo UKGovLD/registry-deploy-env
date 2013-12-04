@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-RELEASE=snapshot/com/github/ukgovld/registry-core/0.0.2-SNAPSHOT/registry-core-0.0.2-20131118.120346-3.war
+RELEASE=snapshot/com/github/ukgovld/registry-core/0.0.2-SNAPSHOT/registry-core-0.0.2-20131204.093239-4.war
 
 apt-get update -y
 apt-get install -y curl chkconfig

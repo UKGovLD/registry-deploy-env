@@ -1,0 +1,10 @@
+<Regions_and_Habitats>
+        a       <http://www.w3.org/2004/02/skos/core#Concept> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Regions and Habitats" ;
+        <http://purl.org/dc/terms/description>
+                "Code lists used to describe regions, habitats or geographic areas" ;
+        <http://www.w3.org/2004/02/skos/core#notation>
+                "Regions_and_Habitats" ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel>
+                "Regions and Habitats" .

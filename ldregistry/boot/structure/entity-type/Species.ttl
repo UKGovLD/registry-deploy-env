@@ -1,0 +1,9 @@
+<Species>  a    <http://www.w3.org/2004/02/skos/core#Concept> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Species" ;
+        <http://purl.org/dc/terms/description>
+                "Code lists used to describe species" ;
+        <http://www.w3.org/2004/02/skos/core#notation>
+                "Species" ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel>
+                "Species" .

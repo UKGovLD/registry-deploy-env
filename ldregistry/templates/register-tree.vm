@@ -2,23 +2,13 @@
 ##   $register will be bound to the register
 ##   $item     will be bound to the corresponding RegisterItem
 
-#if($register.hasResourceValue("rdf:type", "skos:ConceptScheme"))
-  #set($rootProp = "skos:topConceptOf")
-  #set($narrow="skos:narrower|^skos:broader")
-#end
-#if($register.getPropertyValue("ui:hierarchyRootType"))
-  #set($rootType = $register.getPropertyValue("ui:hierarchyRootType"))
-#end
-#if($register.getPropertyValue("ui:hierarchyRootProperty"))
-  #set($rootProp = $register.getPropertyValue("ui:hierarchyRootProperty"))
-#end
-#if($register.getPropertyValue("ui:hierarchyChildProperty"))
-  #set($x=$register.getPropertyValue("ui:hierarchyChildProperty"))
-  #if($x.isLiteral())
+#set($rootType = $register.getPropertyValue("ui:hierarchyRootType"))
+#set($rootProp = $register.getPropertyValue("ui:hierarchyRootProperty"))
+#set($x=$register.getPropertyValue("ui:hierarchyChildProperty"))
+#if($x.isLiteral())
     #set($narrow=$x.lexicalForm)
-  #else
+#else
     #set($narrow="<$x.uRI>")
-  #end
 #end
 
 #if($rootType) 

@@ -1,0 +1,9 @@
+<Air>   a       <http://www.w3.org/2004/02/skos/core#Concept> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Air" ;
+        <http://purl.org/dc/terms/description>
+                "Code lists related to the policy area: Air" ;
+        <http://www.w3.org/2004/02/skos/core#notation>
+                "Air" ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel>
+                "Air" .

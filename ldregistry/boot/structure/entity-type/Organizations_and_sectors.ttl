@@ -1,0 +1,10 @@
+<Organizations_and_sectors>
+        a       <http://www.w3.org/2004/02/skos/core#Concept> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Organizations and sectors" ;
+        <http://purl.org/dc/terms/description>
+                "Code lists used to describe organizations, teams and organizational structures" ;
+        <http://www.w3.org/2004/02/skos/core#notation>
+                "Organizations_and_sectors" ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel>
+                "Organizations and sectors" .

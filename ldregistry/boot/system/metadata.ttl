@@ -13,12 +13,14 @@
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix reg:  <http://purl.org/linked-data/registry#> .
-@prefix cat:  <http://environment.data.gov.uk/registry/system/categories/> .
+@prefix er-ui:  <http://environment.data.gov.uk/registry/structure/ui/> .
+@prefix er-cat:  <http://environment.data.gov.uk/registry/structure/category/> .
+@prefix er-org:  <http://environment.data.gov.uk/registry/structure/org/> .
+@prefix er-entity:  <http://environment.data.gov.uk/registry/structure/entity-type/> .
 
 <system> a reg:Register;
     rdfs:label "System register"@en;
     dct:description "Internal registers which are used to control system operation"@en;
-    reg:owner      <http://reference.data.gov.uk/id/department/defra> ;
     reg:containedItemClass reg:Register;
-    reg:category  cat:system;
+    reg:category  er-cat:System;
     .

@@ -1,0 +1,9 @@
+<System>  a     <http://www.w3.org/2004/02/skos/core#Concept> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "System" ;
+        <http://purl.org/dc/terms/description>
+                "Codes related to internal operation of the registry itself" ;
+        <http://www.w3.org/2004/02/skos/core#notation>
+                "System" ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel>
+                "System" .

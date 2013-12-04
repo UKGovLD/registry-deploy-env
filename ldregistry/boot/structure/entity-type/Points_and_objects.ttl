@@ -1,0 +1,9 @@
+<Points_and_objects>  a  <http://www.w3.org/2004/02/skos/core#Concept> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Points and objects" ;
+        <http://purl.org/dc/terms/description>
+                "Code lists used to describe points, spatial objects of physical objects such as assets" ;
+        <http://www.w3.org/2004/02/skos/core#notation>
+                "Points_and_objects" ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel>
+                "Points and objects" .

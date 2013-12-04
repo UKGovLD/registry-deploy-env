@@ -18,10 +18,10 @@
 @prefix er-org:  <http://environment.data.gov.uk/registry/structure/org/> .
 @prefix er-entity:  <http://environment.data.gov.uk/registry/structure/entity-type/> .
 
-<category> a reg:Register;
+<category> a reg:Register, skos:ConceptScheme;
     rdfs:label "Category"@en;
     dct:description "Codes used to classify collections in the registry, based on Natura2000 policy areas."@en;
     reg:owner     er-org:DEFRA ;
     reg:category  er-cat:System;
-    er-ui:entity  er-entity:Abstract;
+    er-ui:entityType  er-entity:Abstract;
     .

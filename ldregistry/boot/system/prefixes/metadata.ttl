@@ -10,11 +10,14 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix reg:  <http://purl.org/linked-data/registry#> .
 @prefix ui:   <http://purl.org/linked-data/registry-ui#> .
-@prefix cat:  <http://environment.data.gov.uk/registry/system/categories/> .
+@prefix er-ui:  <http://environment.data.gov.uk/registry/structure/ui/> .
+@prefix er-cat:  <http://environment.data.gov.uk/registry/structure/category/> .
+@prefix er-org:  <http://environment.data.gov.uk/registry/structure/org/> .
+@prefix er-entity:  <http://environment.data.gov.uk/registry/structure/entity-type/> .
 
 <prefixes> a reg:Register;
     rdfs:label "prefixes"@en;
     dct:description "System register containing the prefix mappings used in serializations"@en;
     reg:containedItemClass owl:Ontology;
-    reg:category  cat:system;
+    reg:category  er-cat:System;
     .

@@ -8,10 +8,13 @@
 @prefix ldp:  <http://www.w3.org/ns/ldp#> .
 @prefix reg:  <http://purl.org/linked-data/registry#> .
 @prefix ui:   <http://purl.org/linked-data/registry-ui#> .
-@prefix cat:  <http://environment.data.gov.uk/registry/system/categories/> .
+@prefix er-ui:  <http://environment.data.gov.uk/registry/structure/ui/> .
+@prefix er-cat:  <http://environment.data.gov.uk/registry/structure/category/> .
+@prefix er-org:  <http://environment.data.gov.uk/registry/structure/org/> .
+@prefix er-entity:  <http://environment.data.gov.uk/registry/structure/entity-type/> .
 
 <typed-templates> a reg:Register ;
     rdfs:label "typed templates"@en;
     dct:description "System register containing collection of templates which can be used to provide custom rendering of resources of a specific type"@en;
-    reg:category  cat:system;
+    reg:category  er-cat:System;
     .

@@ -18,9 +18,10 @@
 @prefix er-org:  <http://environment.data.gov.uk/registry/structure/org/> .
 @prefix er-entity:  <http://environment.data.gov.uk/registry/structure/entity-type/> .
 
-<entity-type> a reg:Register;
+<entity-type> a reg:Register, skos:ConceptScheme;
     rdfs:label "Entity type"@en;
     dct:description "Codes used to describe the type of entity that a code list is used for."@en;
     reg:owner     er-org:DEFRA ;
     reg:category  er-cat:System;
+    er-ui:entityType  er-entity:Abstract;
     .
