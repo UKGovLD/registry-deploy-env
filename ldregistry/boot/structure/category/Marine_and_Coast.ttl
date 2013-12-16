@@ -1,9 +1,0 @@
-<Marine_and_Coast>  a  <http://www.w3.org/2004/02/skos/core#Concept> ;
-        <http://www.w3.org/2000/01/rdf-schema#label>
-                "Marine and Coast" ;
-        <http://purl.org/dc/terms/description>
-                "Code lists related to the policy area: Marine and Coast" ;
-        <http://www.w3.org/2004/02/skos/core#notation>
-                "Marine_and_Coast" ;
-        <http://www.w3.org/2004/02/skos/core#prefLabel>
-                "Marine and Coast" .

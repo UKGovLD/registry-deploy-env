@@ -1,9 +1,0 @@
-<Noise>  a      <http://www.w3.org/2004/02/skos/core#Concept> ;
-        <http://www.w3.org/2000/01/rdf-schema#label>
-                "Noise" ;
-        <http://purl.org/dc/terms/description>
-                "Code lists related to the policy area: Noise" ;
-        <http://www.w3.org/2004/02/skos/core#notation>
-                "Noise" ;
-        <http://www.w3.org/2004/02/skos/core#prefLabel>
-                "Noise" .

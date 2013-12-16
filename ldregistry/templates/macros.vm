@@ -125,6 +125,11 @@
   #if(!$values.isEmpty())<tr><td class="align-right span2"><strong>$label</strong></td><td>#foreach($value in $values)#render($value)#if( $foreach.hasNext ) <br /> #end#end</td></tr>#end
 #end
 
+## Conditional row in a metadata table, show only first value
+#macro(smetadatarow $label $values)
+  #if(!$values.isEmpty())<tr><td class="align-right span2"><strong>$label</strong></td><td>$values[0]</td></tr>#end
+#end
+
 ## Conditional row in a metadata table, value is a URI that should be rendered as a full link
 #macro(lmetadatarow $label $values)
   #if(!$values.isEmpty())<tr><td class="align-right span2"><strong>$label</strong></td><td>#foreach($value in $values)#linkraw($value)#if( $foreach.hasNext ) <br /> #end#end</td></tr>#end

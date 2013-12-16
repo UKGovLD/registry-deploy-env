@@ -10,7 +10,7 @@
     #end
     <a href="#status-dialog" role="button" class="btn btn-primary btn-sm" data-toggle="modal">Set status</a>
 
-    ## Set statis for the contents of a register
+    ## Set status for the contents of a register
     #if ($register)
       ## Find a sample member
       #set($items = $model.querySelectW("SELECT * where {?page a ldp:Page; api:items ?items.}"))

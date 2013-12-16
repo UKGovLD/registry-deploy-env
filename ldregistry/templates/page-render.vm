@@ -33,6 +33,7 @@
           #metadatarow("category", $entity.listPropertyValues("reg:category"))
           #metadatarow("owned by", $entity.listPropertyValues("reg:owner"))
           #metadatarow("license", $entity.listPropertyValues("dct:license"))
+          #smetadatarow("rights attribution", $entity.connectedNodes("dct:rights/<http://schema.theodi.org/odrs#attributionText>"))
           #metadatarow("last changed on", $entity.listPropertyValues("dct:modified"))
           #nmetadatarow("submitted by", $item.listPropertyValues("reg:submitter"))
           #metadatarow("accepted  on", $item.listPropertyValues("dct:dateAccepted"))
@@ -69,7 +70,7 @@
   <div class="col-md-2">
     <ul class="nav nav-pills nav-stacked action-tab" id="pillstack">
         <li><a href="#detailsTab">Core metadata</a></li>
-        <li><a href="#allmetadataTab" data-toggle="tab">All metadata</a></li>
+        <li><a href="#allmetadataTab" data-toggle="tab">Reg metadata</a></li>
         ## #if($register || $template)  ## Suppressed to reduce height of pill stack
         #if($register)
           <li><a href="#propertiesTab">All properties</img> </a></li>
