@@ -21,7 +21,7 @@
 <ui> a reg:Register;
     rdfs:label "UI"@en;
     dct:description "Codes and concepts used to guide the presentation of the registry user interface."@en;
-    reg:owner     er-org:DEFRA ;
+    reg:owner     er-org:department-for-environment-food-rural-affairs ;
     reg:category  er-cat:System;
     er-ui:entityType  er-entity:Abstract;
     .

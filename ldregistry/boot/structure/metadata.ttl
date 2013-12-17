@@ -22,6 +22,6 @@
     rdfs:label "Structure"@en;
     dct:description "Code lists used to aid organizing and presenting the Environment registry contents."@en;
     reg:containedItemClass reg:Register;
-    reg:owner     er-org:DEFRA ;
+    reg:owner     er-org:department-for-environment-food-rural-affairs ;
     reg:category  er-cat:System;
     .
