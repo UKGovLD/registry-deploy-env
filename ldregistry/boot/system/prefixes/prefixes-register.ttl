@@ -19,6 +19,7 @@
 @prefix ui:   <http://purl.org/linked-data/registry-ui#> .
 @prefix qb:      <http://purl.org/linked-data/cube#> .
 @prefix org:  <http://www.w3.org/ns/org#> .
+@prefix odrs: <http://schema.theodi.org/odrs#> .
 
 <_dc> a reg:RegisterItem;
     rdfs:label "dc"@en;
@@ -352,4 +353,16 @@ org: a owl:Ontology;
     dct:description "ORG prefix registration"@en;
     vann:preferredNamespacePrefix "org";
     vann:preferredNamespaceUri "http://www.w3.org/ns/org#" ;
+    .
+
+<_odrs> a reg:RegisterItem;
+    reg:status reg:statusStable;
+    reg:definition [ reg:entity odrs: ];
+    .
+
+odrs: a owl:Ontology;
+    rdfs:label "odrs"@en;
+    dct:description "Open Data Rights Statement vocabulary registration"@en;
+    vann:preferredNamespacePrefix "odrs";
+    vann:preferredNamespaceUri "http://schema.theodi.org/odrs#" ;
     .
