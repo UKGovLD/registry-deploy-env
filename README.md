@@ -79,3 +79,12 @@ First select or create an EBS volume to use. This might be created from a prior 
     ./attach-volume.sh VOLUMEID
     vagrant provision aws
 
+### Tunnel to the instance
+
+For local VM use:
+
+    vagrant ssh local -- -f -L 9080:localhost:80 -N
+
+For AWS see tunnel.sh
+
+Then visit http://localhost:8090/registry/ in a browser.
