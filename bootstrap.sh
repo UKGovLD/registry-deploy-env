@@ -32,7 +32,7 @@ chkconfig tomcat7 on
 if ! blkid | grep /dev/xvdf; then
   # No visible attached volume but might not be formatted yet
   # This will just fail on a local vm
-  mkfs -t ext4 /dev/xvdf 
+  mkfs -t ext4 /dev/xvdf || true
 fi
 
 if blkid | grep /dev/xvdf; then
@@ -111,6 +111,7 @@ echo "** Installing registry application"
 rm -rf /var/lib/tomcat7/webapps/ROOT*
 rm -rf /var/lib/tomcat7/webapps/registry*
 curl -4s https://s3-eu-west-1.amazonaws.com/ukgovld/$RELEASE > /var/lib/tomcat7/webapps/registry.war
+service tomcat7 restart
 
 if [ $(grep -c -e 'tomcat.*/opt/ldregistry/proxy-conf.sh' /etc/sudoers) -ne 0 ]
 then
