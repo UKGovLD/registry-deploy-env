@@ -12,7 +12,6 @@
       <div class="row">
         <p>This is a pilot service to provide management and public access to codes and codelists used by the Defra family of organizations.</p>
         <p>It is based on the UKGovLD <a href="https://github.com/UKGovLD/ukl-registry-poc/wiki">proof-of-concept design</a> for a Linked Data registry.</p>
-        <p><em>Comments on stability?</em></p>
       </div>
     ## container will be closed by footer
 
