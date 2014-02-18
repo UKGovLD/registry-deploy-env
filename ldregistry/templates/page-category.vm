@@ -3,7 +3,7 @@
 
 <div class="container">
 
-  <h1>List all collections</h1>
+  <h1>List all registers</h1>
   #set($base=$root)
   #if(!$state)
     #set($state="")
