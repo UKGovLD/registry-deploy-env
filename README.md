@@ -8,7 +8,7 @@ This provides vagrant and aws scripts to simplify creation and management of reg
 
 ## Prerequisites 
 
-Install vagrant:
+Install vagrant: (make sure it is at least 1.4.1)
 
     http://downloads.vagrantup.com/
 
@@ -34,6 +34,10 @@ For local virtual machines you will also need VirtualBox:
 and a Ubuntu box:
 
     vagrant box add precise64 http://files.vagrantup.com/precise64.box
+
+For check/berkshelf:
+
+    vagrant plugin install vagrant-berkshelf    
 
 ## Creating a local virtual machine instance
 
@@ -79,4 +83,8 @@ First select or create an EBS volume to use. This might be created from a prior 
     ./attach-volume.sh VOLUMEID
     vagrant provision aws
 
+If the last step fails to rsync (warning about `mkdir -p /vagrant`) then can manually fix with:
 
+    vagrant ssh aws
+    # echo 'Defaults:ec2-user !requiretty' > /etc/sudoers.d/999-vagrant-cloud-init-requiretty && chmod 440 /etc/sudoers.d/999-vagrant-cloud-init-requiretty
+    # exit

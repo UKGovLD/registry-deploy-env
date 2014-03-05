@@ -3,28 +3,39 @@ set -e
 
 RELEASE=snapshot/com/github/ukgovld/registry-core/0.0.2-SNAPSHOT/registry-core-0.0.2-20140304.115743-6.war
 
-apt-get update -y
-apt-get install -y curl chkconfig
+echo "** General updates"
+yum update -y
+yum install -y curl chkconfig
 
-# install and configure tomcat
-echo "** Installing java and tomcat"
-apt-get install -y tomcat7 language-pack-en
-service tomcat7 stop
+echo "** Installing nginx ..."
+echo "**   download package ..."
+yum install -y nginx.x86_64
 
-# tomcat7 on ubuntu seems hardwired to java-6 so have to dance around this
-# installing java-7 first doesn't work and we end up with failures in tomcat startup
-apt-get install -y openjdk-7-jdk 
-update-alternatives --set java /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-unlink /usr/lib/jvm/default-java
-ln -s /usr/lib/jvm/java-1.7.0-openjdk-amd64 /usr/lib/jvm/default-java
+if [ $(grep -c nginx /etc/logrotate.conf) -ne 0 ]
+then
+  echo "**   logrotate for nginx already configured"
+else
+  cat /vagrant/install/nginx.logrotate.conf >> /etc/logrotate.conf
+  echo "**   logrotate for nginx configured"
+fi
+cp /vagrant/install/nginx.conf /etc/nginx/conf.d/localhost.conf
 
-if [[ $(java -version 2>&1 | grep 1.7. -c) -ne 1 ]]
+echo "**   starting service ..."
+service nginx start
+chkconfig nginx on
+
+echo "** Installing java and tomcat ..."
+yum install -y java-1.7.0-openjdk-demo.x86_64 tomcat7.noarch
+alternatives --set java /usr/lib/jvm/jre-1.7.0-openjdk.x86_64/bin/java
+
+if [ $(java -version 2>&1 | grep 1.7. -c) -ne 1 ]
 then
   echo "**   ERROR: java version doesn't look right, try manual alternatives setting restart tomcat7"
   echo "**   java version is:"
   java -version
-  exit 1
 fi
+
+echo "**    starting tomcat"
 service tomcat7 start
 chkconfig tomcat7 on
 
@@ -38,7 +49,7 @@ fi
 if blkid | grep /dev/xvdf; then
   # We have an attached volume, mount it
   if ! mount | grep -q /dev/xvdf ; then
-    # Not mounted yet but chec if e.g. instore store is mounted in its place
+    # Not mounted yet but check if e.g. instance store is mounted in its place
     if mount | grep -q /mnt ; then
       # Yes, in that case remove that mount
       umount /mnt
@@ -54,12 +65,12 @@ if blkid | grep /dev/xvdf; then
   if [ ! -d /mnt/opt/ldregistry ]; then
     mkdir /mnt/opt
     mkdir /mnt/opt/ldregistry
-    chown tomcat7 /mnt/opt/ldregistry
+    chown tomcat /mnt/opt/ldregistry
   fi
   if [ ! -d /mnt/varopt/ldregistry ]; then
     mkdir /mnt/varopt
     mkdir /mnt/varopt/ldregistry
-    chown tomcat7 /mnt/varopt/ldregistry
+    chown tomcat /mnt/varopt/ldregistry
   fi
   if [ ! -d /opt/ldregistry ]; then
     ln -s /mnt/opt/ldregistry /opt
@@ -71,40 +82,23 @@ else
   # No attached volume, just just create empty ldregistry areas
   if [ ! -d "/opt/ldregistry" ]; then
     mkdir /opt/ldregistry
-    chown tomcat7 /opt/ldregistry
+    chown tomcat /opt/ldregistry
   fi
   if [ ! -d "/var/opt/ldregistry" ]; then
     mkdir /var/opt/ldregistry
-    chown tomcat7 /var/opt/ldregistry
+    chown tomcat /var/opt/ldregistry
   fi
 fi
 # If the static ldregistry area is not already set up then clone from the vagrant synced folder
 if [ ! -d "/opt/ldregistry/conf" ]; then
   cp -R /vagrant/ldregistry/* /opt/ldregistry
-  chown -R  tomcat7 /opt/ldregistry/*
+  chown -R  tomcat /opt/ldregistry/*
 fi
 
 if [ ! -d "/var/log/ldregistry" ]; then
   mkdir /var/log/ldregistry
-  chown tomcat7 /var/log/ldregistry
+  chown tomcat /var/log/ldregistry
 fi
-
-# install and configure nginx
-echo "** Installing nginx"
-apt-get install -y nginx
-if [ $(grep -c nginx /etc/logrotate.conf) -ne 0 ]
-then
-  echo "**   logrotate for nginx already configured"
-else
-  cat /vagrant/install/nginx.logrotate.conf >> /etc/logrotate.conf
-  echo "**   logrotate for nginx configured"
-fi
-cp /etc/nginx/sites-available/default  /etc/nginx/sites-available/original
-cp /vagrant/install/nginx.conf /etc/nginx/sites-available/default
-
-echo "**   starting nginx service ..."
-service nginx restart
-chkconfig nginx on
 
 # Set up configuration area /opt/ldregistry
 echo "** Installing registry application"
