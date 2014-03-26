@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-RELEASE=snapshot/com/github/ukgovld/registry-core/0.0.2-SNAPSHOT/registry-core-0.0.2-20140304.115743-6.war
+RELEASE=snapshot/com/github/ukgovld/registry-core/0.0.2-SNAPSHOT/registry-core-0.0.2-20140326.144738-7.war
 
 echo "** General updates"
 yum update -y
