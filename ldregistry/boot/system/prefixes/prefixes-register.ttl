@@ -366,3 +366,17 @@ odrs: a owl:Ontology;
     vann:preferredNamespacePrefix "odrs";
     vann:preferredNamespaceUri "http://schema.theodi.org/odrs#" ;
     .
+
+<_env-ui> a reg:RegisterItem;
+    rdfs:label "env-ui"@en;
+    reg:itemClass owl:Ontology;
+    reg:status reg:statusExperimental;
+    reg:definition [ reg:entity <http://environment.data.gov.uk/registry/structure/ui/> ];
+    .
+
+<http://environment.data.gov.uk/registry/structure/ui/> a owl:Ontology;
+    rdfs:label "env-ui"@en;
+    dct:description "env-ui prefix registration - properties used in the UI of the environment registry"@en;
+    vann:preferredNamespacePrefix "env-ui";
+    vann:preferredNamespaceUri "http://environment.data.gov.uk/registry/structure/ui/";
+    .
