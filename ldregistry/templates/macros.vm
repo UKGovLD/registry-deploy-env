@@ -127,7 +127,7 @@
 
 ## Conditional row in a metadata table, show only first value
 #macro(smetadatarow $label $values)
-  #if(!$values.isEmpty())<tr><td class="align-right span2"><strong>$label</strong></td><td>$values[0]</td></tr>#end
+  #if(!$values.isEmpty())<tr><td class="align-right span2"><strong>$label</strong></td><td>$values[0].name</td></tr>#end
 #end
 
 ## Conditional row in a metadata table, value is a URI that should be rendered as a full link
