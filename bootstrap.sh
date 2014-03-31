@@ -75,9 +75,10 @@ if blkid | grep /dev/xvdf; then
   if [ ! -d /opt/ldregistry ]; then
     ln -s /mnt/opt/ldregistry /opt
   fi
-  if [ ! -d /var/opt/ldregistry ]; then
-    ln -s /mnt/varopt/ldregistry /var/opt
+  if [ ! -d /var/opt/nginx/cache ]; then
+    mkdir -p /var/opt/nginx/cache
   fi
+  
 else
   # No attached volume, just just create empty ldregistry areas
   if [ ! -d "/opt/ldregistry" ]; then
