@@ -26,7 +26,7 @@
   <p>Your openid identifier is: <a href="$id">$id</a></p>
 
     <div class="row">
-      <div class="span8">
+      <div class="col-m8">
         <ul class="nav nav-tabs nav-compact">
           <li class="active"><a href="#permissions" data-toggle="tab">Permissions</a></li>
           <li><a href="#api" data-toggle="tab">API Key</a></li>
@@ -82,6 +82,20 @@
         </div>
       </div>
     </div>
+
+  #if($subject.hasRole("administrator"))
+    <p></p>
+    <div class="row">
+      <div class="col-md-8">
+        <form class="form-horizontal ajax-inline-form" action="$root/system/backup" method="post">
+          <div class="form-group">
+            <input type="submit" value="Schedule backup" class="btn" />
+          </div>
+        </form>
+      </div>
+    </div>
+  #end
+
 
 <div id="grant-user-dialog" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
