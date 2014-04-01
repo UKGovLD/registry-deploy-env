@@ -1,11 +1,6 @@
 #!/bin/bash
 . lib.sh
 
-# Credentials for EA backup-user - limited privileges so OK to have inline
-export AWS_ACCESS_KEY_ID=AKIAJXBQWSEOS55JZOZQ
-export AWS_SECRET_ACCESS_KEY=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
-export AWS_DEFAULT_REGION=eu-west-1
-
 VOL=`aws ec2 describe-volumes --filters "Name=tag:Name,Values=RegistryVol" | jq .Volumes[0].VolumeId | sed -e 's/"\(.*\)"/\1/'`
 if [[ -z $VOL ]]; then
 	echo "Failed to locate volume to backup" 1>&2 
