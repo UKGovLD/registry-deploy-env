@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-RELEASE=snapshot/com/github/ukgovld/registry-core/0.0.2-SNAPSHOT/registry-core-0.0.2-20140326.144738-7.war
+RELEASE=release/com/github/ukgovld/registry-core/0.0.2/registry-core-0.0.2.war
 
 echo "** General updates"
 yum update -y
@@ -115,3 +115,6 @@ else
   cat /vagrant/install/sudoers.conf >> /etc/sudoers
   echo "** added sudoers access to proxy configuration"
 fi
+
+cp /opt/ldregistry/ldrbackup.sh /etc/cron.daily
+chmod +x /etc/cron.daily/ldrbackup.sh
