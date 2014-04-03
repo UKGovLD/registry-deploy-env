@@ -108,13 +108,17 @@ rm -rf /var/lib/tomcat7/webapps/registry*
 curl -4s https://s3-eu-west-1.amazonaws.com/ukgovld/$RELEASE > /var/lib/tomcat7/webapps/registry.war
 service tomcat7 restart
 
-if [ $(grep -c -e 'tomcat.*/opt/ldregistry/proxy-conf.sh' /etc/sudoers) -ne 0 ]
-then
-  echo "** sudoers already configured"
-else
-  cat /vagrant/install/sudoers.conf >> /etc/sudoers
-  echo "** added sudoers access to proxy configuration"
+if [ ! -e "/etc/sudoers.d/ldregistry" ]; then
+  cp /vagrant/install/sudoers.conf /etc/sudoers.d/ldregistry
 fi
+
+#if [ $(grep -c -e 'tomcat.*/opt/ldregistry/proxy-conf.sh' /etc/sudoers) -ne 0 ]
+#then
+#  echo "** sudoers already configured"
+#else
+#  cat /vagrant/install/sudoers.conf >> /etc/sudoers
+#  echo "** added sudoers access to proxy configuration"
+#fi
 
 cp /opt/ldregistry/ldrbackup.sh /etc/cron.daily
 chmod +x /etc/cron.daily/ldrbackup.sh
