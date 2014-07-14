@@ -20,12 +20,16 @@ else
 fi
 cp /vagrant/install/nginx.conf /etc/nginx/conf.d/localhost.conf
 
+if [ ! -d /var/opt/nginx/cache ]; then
+  mkdir -p /var/opt/nginx/cache
+fi
+
 echo "**   starting service ..."
 service nginx start
 chkconfig nginx on
 
 echo "** Installing java and tomcat ..."
-yum install -y java-1.7.0-openjdk-demo.x86_64 tomcat7.noarch
+yum install -y java-1.7.0-openjdk-demo.x86_64 tomcat.noarch
 alternatives --set java /usr/lib/jvm/jre-1.7.0-openjdk.x86_64/bin/java
 
 if [ $(java -version 2>&1 | grep 1.7. -c) -ne 1 ]
@@ -36,8 +40,8 @@ then
 fi
 
 echo "**    starting tomcat"
-service tomcat7 start
-chkconfig tomcat7 on
+service tomcat start
+chkconfig tomcat on
 
 # Configure runtime areas
 if ! blkid | grep /dev/xvdf; then
@@ -57,8 +61,10 @@ if blkid | grep /dev/xvdf; then
       sed -i -e 's!/mnt!/instance!g' /etc/fstab
       mount /instance
     fi
-
-    echo "/dev/xvdf /mnt ext4 rw 0 0" | tee -a /etc/fstab > /dev/null && mount /mnt  
+    # Should create and use UUID
+    # sudo -i blkid | grep /dev/xvdf
+    #  echo "UUID=xxx   /mnt ext4 defaults 0 2" ...
+    echo "/dev/xvdf /mnt ext4 rw 0 2" | tee -a /etc/fstab > /dev/null && mount /mnt  
   fi
 
   # If it's snapshot the ldregistry areas will exist, otherwise create them
@@ -74,9 +80,6 @@ if blkid | grep /dev/xvdf; then
   fi
   if [ ! -d /opt/ldregistry ]; then
     ln -s /mnt/opt/ldregistry /opt
-  fi
-  if [ ! -d /var/opt/nginx/cache ]; then
-    mkdir -p /var/opt/nginx/cache
   fi
   
 else
@@ -103,10 +106,10 @@ fi
 
 # Set up configuration area /opt/ldregistry
 echo "** Installing registry application"
-rm -rf /var/lib/tomcat7/webapps/ROOT*
-rm -rf /var/lib/tomcat7/webapps/registry*
-curl -4s https://s3-eu-west-1.amazonaws.com/ukgovld/$RELEASE > /var/lib/tomcat7/webapps/registry.war
-service tomcat7 restart
+rm -rf /var/lib/tomcat/webapps/ROOT*
+rm -rf /var/lib/tomcat/webapps/registry*
+curl -4s https://s3-eu-west-1.amazonaws.com/ukgovld/$RELEASE > /var/lib/tomcat/webapps/registry.war
+service tomcat restart
 
 if [ ! -e "/etc/sudoers.d/ldregistry" ]; then
   cp /vagrant/install/sudoers.conf /etc/sudoers.d/ldregistry
