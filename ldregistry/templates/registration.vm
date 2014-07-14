@@ -22,6 +22,8 @@
                  data-content="Register an entry by uploading an RDF file">Upload</a></li>
           <li><a href="#batch" data-toggle="pill" class="popinfo" data-trigger="hover" data-placement="bottom"
                  data-content="Register a collection of entries by uploading a bulk file">Upload batchfile</a></li>
+          <li><a href="#batch-ref" data-toggle="pill" class="popinfo" data-trigger="hover" data-placement="bottom"
+                 data-content="Register a collection of referenced entries by uploading a bulk file">Upload ref-batchfile</a></li>
           <li><a href="#register" data-toggle="pill" class="popinfo" data-trigger="hover" data-placement="bottom"
                  data-content="Create a new sub-register here">Subregister</a></li>
           <li><a href="#forward" data-toggle="pill" class="popinfo" data-trigger="hover" data-placement="bottom"
@@ -47,6 +49,18 @@
             <form class="ajax-form" action="$register?batch-managed" method="post" enctype="multipart/form-data" data-return="$return">
               <div class="form-group">
                 <label>Choose a bulk file to upload:</label>
+                <input class="form-control" type="file" name="file" multiple />
+              </div>
+              <input type="hidden" name="action" value="register" />
+              <button class="btn">Upload and register</button>
+            </form>
+            <div class="ajax-error"></div>
+          </div>
+
+          <div class="tab-pane" id="batch-ref">
+            <form class="ajax-form" action="$register?batch-referenced" method="post" enctype="multipart/form-data" data-return="$return">
+              <div class="form-group">
+                <label>Choose a bulk reference file to upload:</label>
                 <input class="form-control" type="file" name="file" multiple />
               </div>
               <input type="hidden" name="action" value="register" />
