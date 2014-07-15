@@ -6,8 +6,10 @@
   #end
 #parse("navbar.vm")
 
-<h2>Sorry</h2>
+    <div class="container">
+        <h2>Sorry</h2>
 
-<p>$message</p>
+        <p>$message</p>
 
+    ## container will be closed by footer
 #parse("footer.vm")

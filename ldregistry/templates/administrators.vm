@@ -1,0 +1,47 @@
+#parse("header.vm")
+#set($nav="admin")
+#parse("navbar.vm")
+
+    <div class="container">
+    #if($subject.isAuthenticated())
+        #if($subject.hasRole("administrator"))
+            <h3>Current administrators</h3>
+            #set($admins=$registry.userStore.listAdminUsers())
+            #parse("admin-list.vm")
+            <div class="space-above">
+                    <a href="#grant-user-dialog" role="button" class="btn btn-primary" data-toggle="modal">Add administrator</a>
+            </div>
+        #end
+
+    #else
+        <h3>Sorry you must be logged in to access this page</h3>
+    #end
+
+    <div id="grant-user-dialog" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3>Locate a registered user to grant administration rights to</h3>
+          </div>
+          <div class="modal-body">
+            <form id="user-form"  class="form-inline query-form"
+            data-target="$root/system/security/listusers?grant=administrator&query=" data-query="#user-query" data-result="#user-list">
+            <div class="input-group">
+              <input class="form-control" id="user-query" type="text" class="input-medium">
+              <span class="input-group-btn">
+                <button id="user-search" type="submit" class="btn">Search</button>
+              </span>
+            </div>
+          </form>
+          <div id="user-list"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+    ## container will be closed by footer
+#parse("footer.vm")

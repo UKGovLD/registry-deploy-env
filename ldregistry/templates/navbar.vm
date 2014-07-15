@@ -16,7 +16,21 @@
       <li #if($nav=="browse")class="active"#end><a href="$root/?_browse=true">Browse</a></li>
       <li #if($nav=="about")class="active"#end><a href="$uiroot/about">About</a></li>
       #if($subject.isAuthenticated())
-        <li #if($nav=="admin")class="active"#end><a href="$uiroot/admin">Admin</a></li>
+        #set($user=$subject.principal)
+        <li #if($nav=="admin")class="active"#end class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a  href="$uiroot/view-permissions">View permissions</a></li>
+            <li><a  href="$uiroot/change-password">Change password</a></li>
+            #if($subject.hasRole("administrator"))
+              <li><a  href="$uiroot/administrators">Administrators</a></li>
+              <li><a  href="$uiroot/reset-password">Reset user password</a></li>
+              <li><a  href="$uiroot/backups">Backups</a></li>
+            #end
+            <li><a  href="#logout-dialog" role="button" data-toggle="modal">Logout</a></li>
+          </ul>
+        </li>
+##        <li #if($nav=="admin")class="active"#end><a href="$uiroot/admin">Admin</a></li>
       #end
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Advanced <b class="caret"></b></a>

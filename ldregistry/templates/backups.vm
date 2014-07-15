@@ -1,0 +1,28 @@
+#parse("header.vm")
+#set($nav="admin")
+#parse("navbar.vm")
+
+    <div class="container">
+    #if($subject.isAuthenticated())
+        <h2>Backups</h2>
+        #if($subject.hasRole("administrator"))
+            <div class="row">
+              <div class="col-md-2">
+                <form class="form-horizontal ajax-inline-form" action="$root/system/backup" method="post">
+                  <div class="form-group">
+                    <input type="submit" value="Schedule backup" class="btn" />
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-8">
+                $registry.backupService.status
+              </div>
+            </div>
+        #end
+
+    #else
+        <h3>Sorry you must be logged in to access this page</h3>
+    #end
+
+    ## container will be closed by footer
+#parse("footer.vm")
