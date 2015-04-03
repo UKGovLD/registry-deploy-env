@@ -56,14 +56,12 @@
               </div>
               <div class="row space-above">
                 <div class="col-md-12">
-                  <form class="form-horizontal" action="$root/system/security/login" method="post">
-                    <p>Or enter your OpenID identity such as a Yahoo OpenID</p>
+                  <form class="form-horizontal" action="$root/system/security/loginoa" method="post">
+                    <p>Or login via a registered Google G+ account</p>
                     <div class="input-group">
-                      <input type="text" class="form-control" name="provider" #if($provider)value="$provider"#{else}placeholder="OpenID URL"#end    />
+                      <input type="hidden" name="provider" value="https://accounts.google.com/o/oauth2/auth" />
                       <input type="hidden" name="return" value="$return" />
-                      <span class="input-group-btn">
-                        <input type="submit" value="login" class="btn btn-primary" type="button" />
-                      </span>
+                      <input type="submit" value="login via Google" class="btn btn-primary" type="button" />
                     </div><!-- /input-group -->
                   </form>
                 </div>
@@ -104,14 +102,12 @@
               </div>
               <div class="row space-above">
                 <div class="col-md-12">
-                  <form class="form-horizontal" action="$root/system/security/register" method="post">
-                    <p>Or enter your OpenID identity such as a Yahoo OpenID.</p>
+                  <form class="form-horizontal" action="$root/system/security/registeroa" method="post">
+                    <p>Or authorize via a Google G+ account</p>
                     <div class="input-group">
-                      <input class="form-control" type="text" name="provider" placeholder="OpenID URL">
+                      <input type="hidden" name="provider" value="https://accounts.google.com/o/oauth2/auth" />
                       <input type="hidden" name="return" value="$return" />
-                      <span class="input-group-btn">
-                        <input type="submit" value="register" class="btn btn-primary" type="button" />
-                      </span>
+                      <input type="submit" value="Create account via Google" class="btn btn-primary" type="button" />
                     </div>
                   </form>
                 </div>
