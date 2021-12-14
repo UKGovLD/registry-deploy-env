@@ -1,3 +1,7 @@
+# Deprecated
+
+Use registry-deploy-env2016
+
 # registry-deploy-env
 
 Provides configuration, UI templates and bootstraping for the Environment Registry.
